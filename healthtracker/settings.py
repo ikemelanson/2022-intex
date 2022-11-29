@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'journals.apps.JournalsConfig',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -79,8 +80,14 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'healthtracker',
         'USER' : 'postgres',
+<<<<<<< HEAD
         'PASSWORD': '0067Tc0287!',
         'HOST': 'localhost',
+=======
+        'PASSWORD': 'Hel@man512',
+        'HOST': 'localhost'#,
+        #'PORT' : '5433'
+>>>>>>> main
     }
 }
 
@@ -129,3 +136,5 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
