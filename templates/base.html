@@ -40,17 +40,14 @@
 
               {%if user.is_authenticated%}
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+                <a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{%url 'logout' %}">Logout</a>
               </li>
               {%else %}
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link me-5" href="{% url 'register'%}">Register</a>
+                <a class="nav-link me-5" href="{% url 'account'%}">Register</a>
               </li>
               <a href="{%url 'login'%}" class="btn btn-outline-secondary shawdow-sm d-sm d-block" > Login </a>
               {%endif%}
