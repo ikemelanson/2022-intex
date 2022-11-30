@@ -38,9 +38,9 @@
             {% csrf_token %}
             {{ Dashboard_form|crispy }}
         <br><br>
-            <input class = 'btn btn-primary btn-block' type='submit' value = 'Add'>
+            <input class='btn btn-primary btn-block' type='submit' value = 'Add'>
         </form>
-      </div>
+    </div>
 </div>
 <br><br><br>
 <button class="accordion">Blood Work Entry</button>
@@ -59,7 +59,7 @@
 </div>
 <div>
 <!-- Add visuals here -->
-        <canvas id="myChart" width="200" height="200"></canvas>
+        <canvas id="myChart" width="300" height="300"></canvas>
         <script>
         const ctx = document.getElementById('myChart').getContext('2d');
         const myChart = new Chart(ctx, {
@@ -100,6 +100,20 @@
         });
         </script>
 </div>
+
+<div class = "border shadow personal">
+    <h4>Add Personal Information</h4>
+    <hr>
+    <form method="POST">
+        {% csrf_token %}
+        {{ person_form|crispy }}
+    </br>
+        <input class = 'btn btn-primary btn-block' type='submit' value = 'Add'>
+    </form>
+  </div>
+
+
+
 
 <script>
     var acc = document.getElementsByClassName("accordion");

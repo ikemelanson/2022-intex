@@ -42,18 +42,30 @@ def accountRegisterView(request):
 
 
 def dashboardPageView(request) :
+    person_data = Person.objects.all()
     data = Journal_Entry.objects.all()
     serum_data = Serum_Measure.objects.all()
     if request.method == 'POST' :
         Dashboard_form = Journal_Entry_Form(request.POST)
         serum_form = Serum_Entry_Form(request.POST)
+        Person_form = PersonForm(request.POST)
+
+        if Person_form.is_valid():
+            Person_form.save()
+            return redirect('/')
+
         if Dashboard_form.is_valid() :
             Dashboard_form.save()
             return redirect('/')
     else :
         Dashboard_form = Journal_Entry_Form()
+        serum_form = Serum_Entry_Form()
+        Person_form = PersonForm()
+
         serum_form = Serum_Entry_Form
     context = {
+        'person_form': Person_form,
+        'person_data': person_data,
         'serum_data': serum_data,
         'serum_form': serum_form,
         'data': data,
