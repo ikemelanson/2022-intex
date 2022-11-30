@@ -16,6 +16,7 @@ class AccountRegister(forms.ModelForm):
     class Meta:
         model = User
         fields = ['first_name', 'last_name', 'username', 'email', 'password', ]
+        
 class Serum_Entry_Form(forms.ModelForm):
     class Meta:
         model = Serum_Entry
