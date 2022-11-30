@@ -27,14 +27,14 @@ def registerPageView(request) :
 
 def accountRegisterView(request):
     if request.method == 'POST' :
-        Register_form = AccountRegister(request.POST)
+        Register_form = UserCreationForm(request.POST)
         if Register_form.is_valid() :
             Register_form.save()
             username = Register_form.cleaned_data.get('username')
             messages.success(request, f'Hi {username}, your account was created successfully')
             return redirect('/')
     else :
-        Register_form = AccountRegister()
+        Register_form = UserCreationForm()
     context = {
         'Register_form': Register_form,
     }

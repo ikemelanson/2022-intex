@@ -36,7 +36,7 @@
             <ul class="navbar-nav ms-auto">
               {%if user.is_authenticated%}
               <li class="nav-item">
-               <b> <p class="nav-link">Welcome, {{user.first_name}}</p></b>
+               <b> <p class="nav-link">Welcome, {{user.username}}</p></b>
               </li>
               {%endif%}
               <li class="nav-item">
