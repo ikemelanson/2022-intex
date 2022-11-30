@@ -14,7 +14,30 @@ body {
     background-color: var(--body);
 }
 
-
+.login {
+    border-radius: 10px;
+    width:50%;
+    margin: auto;
+    padding:30px;
+}
+.personal{
+    border-radius: 10px;
+    width:50%;
+    margin: auto;
+    padding:30px;
+}
+.data {
+    border-radius: 10px;
+    width:40%;
+    margin: auto;
+    padding:30px;  
+}
+.account-div {
+    width: 40%;
+    border-radius: 20px;
+    margin:auto;
+    padding: 30px;
+}
 .btn {
     border-radius: 8px;
 }

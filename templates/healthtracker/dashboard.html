@@ -38,26 +38,22 @@
             <label for = 'journal_date'>Enter the date:</label>
             <input type = 'text' name = 'journal_date' id = 'journal_date'
         <br><br>
-            <input class = 'btn btn-success btn-block' type='submit' value = 'Add'>
+            <input class='btn btn-primary btn-block' type='submit' value = 'Add'>
         </form>
       </div>
 </div>
-<div>
-    <div>
         <!-- Serum entry form-->
-        <div class = "border p-3 shadow">
+        <div class="data border">
             <h4>Add Data</h4>
             <hr>
             <form method="POST">
                 {% csrf_token %}
-                {{ serum_form }}
-                <input class = 'btn btn-success btn-block' type='submit' value = 'Add'>
+                {{ serum_form|crispy }}
+                <input class = 'btn btn-primary btn-block' type='submit' value = 'Add'>
             </form>
         </div>
-    </div>
-    <div>
 <!-- Add visuals here -->
-        <canvas id="myChart" width="200" height="200"></canvas>
+        <canvas id="myChart" width="300" height="300"></canvas>
         <script>
         const ctx = document.getElementById('myChart').getContext('2d');
         const myChart = new Chart(ctx, {
@@ -99,6 +95,20 @@
         </script>
     </div>
 </div>
+
+<div class = "border shadow personal">
+    <h4>Add Personal Information</h4>
+    <hr>
+    <form method="POST">
+        {% csrf_token %}
+        {{ person_form|crispy }}
+    </br>
+        <input class = 'btn btn-primary btn-block' type='submit' value = 'Add'>
+    </form>
+  </div>
+
+
+
 
 <script>
     var acc = document.getElementsByClassName("accordion");
