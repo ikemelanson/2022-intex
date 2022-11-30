@@ -139,11 +139,11 @@
             type: 'line',
             data: {
                 // x axis
-                labels: [{% for serum_data in serum_data %} '{{serum_data.serum_nutrient_id}}', {% endfor %}],
+                labels: [{% for serum_data in serum_data %} '{{serum_data.serum_entry_date}}', {% endfor %}],
                 datasets: [{
                     // y axis
                     label: 'Serum Stats',
-                    data: [{% for serum_data in serum_data %} {{serum_data.serum_measure_amount}}, {% endfor %}],
+                    data: [{% for serum_data in serum_data %} {{serum_data.meql_sodium}}, {% endfor %}],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
