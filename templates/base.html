@@ -16,7 +16,7 @@
         <div class="container">
           <a class="navbar-brand" href="#">
             <!-- Brand-->
-            <img src="{% static 'img/logo.png' alt="logo"%}">
+            <img src="{% static 'img/healthykidney-3.png' alt="logo"%}" class="logo-resize">
           </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -24,7 +24,7 @@
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <ul class="navbar-nav ms-auto">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Features</a>
@@ -33,9 +33,9 @@
                 <a class="nav-link" href="#">Dashboard</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link me-5" href="#">Register</a>
+                <a class="nav-link me-5" href="{% url 'register'%}">Register</a>
               </li>
-              <a href="register" class="btn btn-outline-secondary shawdow-sm d-sm d-block" data-toggle="modal" data-target="#modalLoginForm"> Login </a>
+              <a href="register" class="btn btn-outline-secondary shawdow-sm d-sm d-block"> Login </a>
             </ul>
           </div>
         </div>
