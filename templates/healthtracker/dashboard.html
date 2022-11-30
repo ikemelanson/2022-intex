@@ -25,37 +25,39 @@
       display: none;
       background-color: white;
       overflow: hidden;
+      width: 25%;
     }
+    
 </style>
-<button class="open-button" onclick ="openForm">Journal Entry</button>
+<button class="accordion">Journal Entry</button>
 <div class="panel">
     <div class = "border p-3 shadow">
         <h4>New Food Journal Entry</h4>
         <hr>
         <form method="POST">
             {% csrf_token %}
-            <!--{{ form|crispy }}-->
-            <label for = 'journal_date'>Enter the date:</label>
-            <input type = 'text' name = 'journal_date' id = 'journal_date'
+            {{ Dashboard_form|crispy }}
         <br><br>
-            <input class = 'btn btn-success btn-block' type='submit' value = 'Add'>
+            <input class = 'btn btn-primary btn-block' type='submit' value = 'Add'>
         </form>
       </div>
 </div>
-<div>
-    <div>
-        <!-- Serum entry form-->
-        <div class = "border p-3 shadow">
-            <h4>Add Data</h4>
-            <hr>
-            <form method="POST">
-                {% csrf_token %}
-                {{ serum_form }}
-                <input class = 'btn btn-success btn-block' type='submit' value = 'Add'>
-            </form>
-        </div>
+<br><br><br>
+<button class="accordion">Blood Work Entry</button>
+<div class="panel">
+    <!-- Serum entry form-->
+    <div class = "border p-3 shadow">
+        <h4>Add Serum Levels</h4>
+        <hr>
+        <form method="POST">
+            {% csrf_token %}
+            {{ serum_form }}
+        <br><br>
+            <input class = 'btn btn-primary btn-block' type='submit' value = 'Add'>
+        </form>
     </div>
-    <div>
+</div>
+<div>
 <!-- Add visuals here -->
         <canvas id="myChart" width="200" height="200"></canvas>
         <script>
@@ -97,7 +99,6 @@
             }
         });
         </script>
-    </div>
 </div>
 
 <script>
