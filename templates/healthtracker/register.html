@@ -7,7 +7,7 @@
     <hr>
     <form method="POST">
         {% csrf_token %}
-        {{ form|crispy }}
+        {{ Person_form|crispy }}
     </br>
         <input class = 'btn btn-success btn-block' type='submit' value = 'Add'>
     </form>
