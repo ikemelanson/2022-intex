@@ -10,10 +10,17 @@
                     Keep track of your Nutrition.<br>
                     Live a healthy kidney life.
                 </div>
+                {%if user.is_authenticated%}
                 <div class="buttons d-grid gap-1 col-6 mx-auto">
-                  <a href="#" class="btn btn-primary btn-lg"> Get started</a>  
+                  <a href="{%url 'dashboard'%}" class="btn btn-primary btn-lg"> View Dashboard </a>  
                   {% comment %} <a href="#" class="btn btn-outline-secondary m5-3"> Live previews </a>   {% endcomment %}
                 </div>
+                {%else%}
+                <div class="buttons d-grid gap-1 col-6 mx-auto">
+                    <a href="{%url 'account'%}" class="btn btn-primary btn-lg"> Get Started </a>  
+                    {% comment %} <a href="#" class="btn btn-outline-secondary m5-3"> Live previews </a>   {% endcomment %}
+                  </div>
+                {%endif%}
             </div>
             <div class="col-md-7">
                 <img src="{% static 'img/family.jpg'%}" alt="image" class=" smaller">
@@ -107,13 +114,17 @@
            
         </div>
     </div>
-
+    {%if user.is_authenticated%}
     <div class="buttons d-grid gap-1 col-6 mx-auto">
-        <a href="#" class="btn btn-primary btn-lg"> Get started</a>  
+        <a href="{%url 'dashboard'%}" class="btn btn-primary btn-lg"> View dashboard</a>  
         {% comment %} <a href="#" class="btn btn-outline-secondary m5-3"> Live previews </a>   {% endcomment %}
       </div>
-
-
+    {%else%}
+    <div class="buttons d-grid gap-1 col-6 mx-auto">
+        <a href="{%url 'account'%}" class="btn btn-primary btn-lg"> Get Started</a>  
+        {% comment %} <a href="#" class="btn btn-outline-secondary m5-3"> Live previews </a>   {% endcomment %}
+      </div>
+      {%endif%}
 </section>
 {%endblock%}
 

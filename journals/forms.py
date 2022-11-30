@@ -15,7 +15,7 @@ class Journal_Entry_Form(forms.ModelForm) :
 class AccountRegister(forms.ModelForm):
     class Meta:
         model = User
-        fields = ['username', 'email', 'password', ]
+        fields = ['first_name', 'last_name', 'username', 'email', 'password', ]
 class Serum_Entry_Form(forms.ModelForm):
     class Meta:
         # switch model for charts
