@@ -90,18 +90,11 @@
       background-color: #ccc; 
     }
     
-    .panel {
-      padding: 0 18px;
-      display: none;
-      background-color: white;
-      overflow: hidden;
-      width: 25%;
-    }
-    
 </style>
-<button class="accordion">Journal Entry</button>
-<div class="panel">
-    <div class = "border p-3 shadow">
+<details>
+    <summary>Journal Entry</summary>
+    <div class="content">
+        <div class= "border journalentry">
         <h4>New Food Journal Entry</h4>
         <hr>
         <form method="POST">
@@ -111,8 +104,18 @@
             <input class='btn btn-primary btn-block' type='submit' value = 'Add'>
         </form>
     </div>
+    <div class="journalGraph">
+        <div class="graphs">
+            Hello
+        </div>
+    </div>
 </div>
-<br><br><br>
+    </div>
+  </details>
+  </details>
+<br>
+
+
 <button class="accordion">Blood Work Entry</button>
 <div class="panel">
     <!-- Serum entry form-->
@@ -136,11 +139,11 @@
             type: 'line',
             data: {
                 // x axis
-                labels: [{% for serum_data in serum_data %} '{{serum_data.serum_nutrient_id}}', {% endfor %}],
+                labels: [{% for serum_data in serum_data %} '{{serum_data.serum_entry_date}}', {% endfor %}],
                 datasets: [{
                     // y axis
                     label: 'Serum Stats',
-                    data: [{% for serum_data in serum_data %} {{serum_data.serum_measure_amount}}, {% endfor %}],
+                    data: [{% for serum_data in serum_data %} {{serum_data.meql_sodium}}, {% endfor %}],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
