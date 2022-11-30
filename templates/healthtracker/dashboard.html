@@ -124,7 +124,7 @@
         <hr>
         <form method="POST">
             {% csrf_token %}
-            {{ serum_form }}
+            {{ serum_form|crispy }}
         <br><br>
             <input class = 'btn btn-primary btn-block' type='submit' value = 'Add'>
         </form>
