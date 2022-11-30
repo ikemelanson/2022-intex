@@ -34,8 +34,10 @@
         <hr>
         <form method="POST">
             {% csrf_token %}
-            {{ form|crispy }}
-        </br>
+            <!--{{ form|crispy }}-->
+            <label for = 'journal_date'>Enter the date:</label>
+            <input type = 'text' name = 'journal_date' id = 'journal_date'
+        <br><br>
             <input class = 'btn btn-success btn-block' type='submit' value = 'Add'>
         </form>
       </div>
