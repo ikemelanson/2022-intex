@@ -22,6 +22,7 @@ class Meal(models.Model):
     def __str__(self):
         return (self.description)
 
+# to do: possibly add default current date and time for the journal entry
 class Journal_Entry(models.Model) :
     person_id = models.ForeignKey(Person, on_delete=models.CASCADE)
     journal_date = models.DateField(default=datetime.today)
