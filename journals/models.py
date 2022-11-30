@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.db import models
 
 # Create your models here.
@@ -24,8 +25,8 @@ class Meal(models.Model):
 # to do: possibly add default current date and time for the journal entry
 class Journal_Entry(models.Model) :
     person_id = models.ForeignKey(Person, on_delete=models.CASCADE)
-    journal_date = models.DateField()
-    journal_time = models.TimeField()
+    journal_date = models.DateField(default=datetime.today)
+    journal_time = models.TimeField(default=datetime.today)
     meal_id = models.ForeignKey(Meal, on_delete=models.DO_NOTHING)
 
     def __str__(self):
