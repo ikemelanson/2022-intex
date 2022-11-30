@@ -18,5 +18,6 @@ class AccountRegister(forms.ModelForm):
         fields = ['username', 'email', 'password', ]
 class Serum_Entry_Form(forms.ModelForm):
     class Meta:
+        # switch model for charts
         model = Serum_Measure
         fields = '__all__'

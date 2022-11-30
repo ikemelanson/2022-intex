@@ -27,17 +27,15 @@
       overflow: hidden;
     }
 </style>
-<button class="open-button" onclick ="openForm">Journal Entry</button>
+<button class="accordion">Journal Entry</button>
 <div class="panel">
     <div class = "border p-3 shadow">
         <h4>New Food Journal Entry</h4>
         <hr>
         <form method="POST">
             {% csrf_token %}
-            <!--{{ form|crispy }}-->
-            <label for = 'journal_date'>Enter the date:</label>
-            <input type = 'text' name = 'journal_date' id = 'journal_date'
-        <br><br>
+            {{ form|crispy }}
+        </br>
             <input class = 'btn btn-success btn-block' type='submit' value = 'Add'>
         </form>
       </div>
