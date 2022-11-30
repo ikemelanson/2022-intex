@@ -4,7 +4,6 @@ from .models import *
 from .forms import *
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
-import pandas as pd
 
 def indexPageView(request):
     return render(request, 'healthtracker/index.html' )
@@ -45,7 +44,7 @@ def accountRegisterView(request):
 def dashboardPageView(request) :
     person_data = Person.objects.all()
     data = Journal_Entry.objects.all()
-    serum_data = Serum_Measure.objects.all()
+    serum_data = Serum_Entry.objects.all()
 
     if request.method == 'POST' :
         Dashboard_form = Journal_Entry_Form(request.POST)
