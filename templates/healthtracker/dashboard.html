@@ -40,21 +40,7 @@
         <br><br>
             <input class='btn btn-primary btn-block' type='submit' value = 'Add'>
         </form>
-      </div>
-</div>
-        <!-- Serum entry form-->
-        <div class="data border">
-            <h4>Add Data</h4>
-            <hr>
-            <form method="POST">
-                {% csrf_token %}
-                {{ serum_form|crispy }}
-                <input class = 'btn btn-primary btn-block' type='submit' value = 'Add'>
-            </form>
-        </div>
-            <input class = 'btn btn-primary btn-block' type='submit' value = 'Add'>
-        </form>
-      </div>
+    </div>
 </div>
 <br><br><br>
 <button class="accordion">Blood Work Entry</button>
