@@ -18,5 +18,5 @@ class AccountRegister(forms.ModelForm):
         fields = ['username', 'email', 'password', ]
 class Serum_Entry_Form(forms.ModelForm):
     class Meta:
-        model = Serum_Measure
+        model = Serum_Entry
         fields = '__all__'
