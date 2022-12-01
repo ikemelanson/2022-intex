@@ -89,17 +89,52 @@
     .active, .accordion:hover {
       background-color: #ccc; 
     }
+
+    .panel {
+        padding: 0 18px;
+        background-color: white;
+        display: none;
+        overflow: hidden;
+      }
 </style>
     <details class="container">
         <summary class="summary btn btn-primary btn-lg btn-block"> Personal Information </summary>
         <div class = "border shadow personal">
             <h4>Add Personal Information</h4>
             <hr>
-            <form method="POST">
+            <form method="POST" action="{% url 'submituser' %}" name="personForm">
                 {% csrf_token %}
-                {{ person_form|crispy }}
-            </br>
-                <input class = 'btn btn-primary btn-block' type='submit' value = 'Add'>
+                <label for="first_name">First Name:</label>
+                <input type="text" name="first_name" id="first_name" maxlength="30">
+
+                <label for="last_name">Last Name:</label><br>
+                <input type="text" name="last_name" id="last_name" maxlength="30"><br><br>
+
+                <label for="age">Age</label><br>
+                <input type="number" name="age" id="age" min="0"><br><br>
+
+                <p>Gender</p>
+                <label for="male">Male</label>
+                <input type="radio" name="gender" value="male" id="male"><br>
+                <label for="female">Female</label>
+                <input type="radio" name="gender" value="female" id="femaale"><br><br>
+
+                <label for="weight">Weight</label><br>
+                <input type="number" name="weight" id="weight"><br><br>
+
+                <label for="height">Height (inches)</label><br>
+                <input type="number" name="height" id="height"><br><br>
+
+                <label for="condition">Condition Level</label>
+                <select name="condition" id="condition">
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select><br><br>
+
+                <input type="text" name="username" value="{{user.username}}" hidden>
+
+                <button type="submit">Submit</button>
+
             </form>
           </div>
     </details>
@@ -109,20 +144,47 @@
             <div class= "border journalentry">
                 <h4>New Food Journal Entry</h4>
                 <hr>
-            <form method="POST">
-                {% csrf_token %}
-                {{ Dashboard_form|crispy }}
-            </br>
-                <input class = 'btn btn-primary btn-block' type='submit' value = 'Add'>
-            </form>
+                <button class = "accordion">Step 1: Add Meal</button>
+                <div class="panel">
+                    <form method="POST" action="{% url 'submituser' %}" name="personForm">
+                        {% csrf_token %}
+                        <!--{{ Dashboard_form|crispy }}-->
+                        <input type="text" name="username" value="{{user.username}}" hidden>
+
+                        <label for "journal_date">Date</label><br>
+                        <input type="date" name="journal_date" id="journal_date" default=><br><br>
+
+                        <label for "journal_date">Time</label><br>
+                        <input type="time" name="journal_time" id="journal_time" default=><br><br>
+
+                        <label for="condition">Meal</label><br>
+                        <select name="meal_id" id="meal_id">
+                            {%for meal in meal_data%}
+                                <option value="description">{{meal.description}}</option>
+                            {%endfor%}
+                        </select><br><br>
+                    </br>
+                        <input class = 'btn btn-primary btn-block' type='submit' value = 'Add'>
+                    </form>
+                </div>
+                <br>
+                <button class = "accordion">Step 2: Add Food</button>
+                <div class="panel">
+                    <form method="POST">
+                        {% csrf_token %}
+                        {{ Food_journal_form|crispy }}
+                    </br>
+                        <input class = 'btn btn-primary btn-block' type='submit' value = 'Add'>
+                    </form>
+                </div>
             </div>
-        <div class="journalGraph">
-            <div class="graphs">
-                Hello
+            <div class="journalGraph">
+                <div class="graphs">
+                    Hello
+                </div>
             </div>
         </div>
-    </div>
-  </details>
+    </details>
 <details class="container">
     <summary class="summary btn btn-primary btn-lg btn-block">Blood work Entry</summary>
     <div class="content">
