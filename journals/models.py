@@ -43,7 +43,7 @@ class Food(models.Model):
     mg_phosphorus = models.DecimalField(max_digits=5, decimal_places=1, default=0)
     mg_potassium = models.DecimalField(max_digits=5, decimal_places=1, default=0)
     mg_sodium = models.DecimalField(max_digits=5, decimal_places=1, default=0)
-    
+
     def __str__(self):
         return (self.food_name)
 
