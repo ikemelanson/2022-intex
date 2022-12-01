@@ -198,8 +198,8 @@
                     <!-- Add visuals here -->
                             <canvas id="PChart" width="300" height="300"></canvas>
                             <script>
-                            const ctx = document.getElementById('PChart').getContext('2d');
-                            const PChart = new Chart(ctx, {
+                            const ctx1 = document.getElementById('PChart').getContext('2d');
+                            const PChart = new Chart(ctx1, {
                                 type: 'line',
                                 data: {
                                     // x axis
@@ -245,10 +245,10 @@
                 <p>Tokyo is the capital of Japan.</p>
                 <div>
                     <!-- Add visuals here -->
-                            <canvas id="myChart" width="300" height="300"></canvas>
+                            <canvas id="SodiumChart" width="300" height="300"></canvas>
                             <script>
-                            const ctx = document.getElementById('myChart').getContext('2d');
-                            const myChart = new Chart(ctx, {
+                            const ctx2 = document.getElementById('SodiumChart').getContext('2d');
+                            const SodiumChart = new Chart(ctx2, {
                                 type: 'line',
                                 data: {
                                     // x axis
@@ -294,10 +294,10 @@
                 <p>London is the capital city of England.</p>
                 <div>
                     <!-- Add visuals here -->
-                            <canvas id="myChart" width="300" height="300"></canvas>
+                            <canvas id="CreatinineChart" width="300" height="300"></canvas>
                             <script>
-                            const ctx = document.getElementById('myChart').getContext('2d');
-                            const myChart = new Chart(ctx, {
+                            const ctx3 = document.getElementById('CreatinineChart').getContext('2d');
+                            const CreatinineChart = new Chart(ctx3, {
                                 type: 'line',
                                 data: {
                                     // x axis
@@ -343,10 +343,10 @@
                 <p>Paris is the capital of France.</p>
                 <div>
                     <!-- Add visuals here -->
-                            <canvas id="myChart" width="300" height="300"></canvas>
+                            <canvas id="AlbuminChart" width="300" height="300"></canvas>
                             <script>
-                            const ctx = document.getElementById('myChart').getContext('2d');
-                            const myChart = new Chart(ctx, {
+                            const ctx4 = document.getElementById('AlbuminChart').getContext('2d');
+                            const AlbuminChart = new Chart(ctx4, {
                                 type: 'line',
                                 data: {
                                     // x axis
@@ -392,10 +392,10 @@
                 <p>Tokyo is the capital of Japan.</p>
                 <div>
                     <!-- Add visuals here -->
-                            <canvas id="myChart" width="300" height="300"></canvas>
+                            <canvas id="BSChart" width="300" height="300"></canvas>
                             <script>
-                            const ctx = document.getElementById('myChart').getContext('2d');
-                            const myChart = new Chart(ctx, {
+                            const ctx5 = document.getElementById('BSChart').getContext('2d');
+                            const BSChart = new Chart(ctx5, {
                                 type: 'line',
                                 data: {
                                     // x axis
@@ -452,300 +452,7 @@
 <br>
 
   
-  <!-- Tab content -->
-  <div id="Potassium" class="tabcontent">
-    <h3>London</h3>
-    <p>London is the capital city of England.</p>
-    <div>
-        <!-- Add visuals here -->
-                <canvas id="PotassiumChart" width="300" height="300"></canvas>
-                <script>
-                const ctx = document.getElementById('PotassiumChart').getContext('2d');
-                const PotassiumChart = new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        // x axis
-                        labels: [{% for serum_data in serum_data %} '{{serum_data.serum_entry_date}}', {% endfor %}],
-                        datasets: [{
-                            // y axis
-                            label: 'Serum Stats',
-                            data: [{% for serum_data in serum_data %} {{serum_data.mgdl_potassium}}, {% endfor %}],
-                            backgroundColor: [
-                                'rgba(255, 99, 132, 0.2)',
-                                'rgba(54, 162, 235, 0.2)',
-                                'rgba(255, 206, 86, 0.2)',
-                                'rgba(75, 192, 192, 0.2)',
-                                'rgba(153, 102, 255, 0.2)',
-                                'rgba(255, 159, 64, 0.2)'
-                            ],
-                            borderColor: [
-                                'rgba(255, 99, 132, 1)',
-                                'rgba(54, 162, 235, 1)',
-                                'rgba(255, 206, 86, 1)',
-                                'rgba(75, 192, 192, 1)',
-                                'rgba(153, 102, 255, 1)',
-                                'rgba(255, 159, 64, 1)'
-                            ],
-                            borderWidth: 1 
-                        }]
-                    },
-                    options: {
-                        responsive: false,
-                        scales: {
-                            y: {
-                                beginAtZero: true
-                            }
-                        }
-                    }
-                });
-                </script>
-        </div>
-  </div>
-  
-  <div id="Phosphorous" class="tabcontent">
-    <h3>Paris</h3>
-    <p>Paris is the capital of France.</p>
-    <div>
-        <!-- Add visuals here -->
-                <canvas id="PChart" width="300" height="300"></canvas>
-                <script>
-                const ctx = document.getElementById('PChart').getContext('2d');
-                const PChart = new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        // x axis
-                        labels: [{% for serum_data in serum_data %} '{{serum_data.serum_entry_date}}', {% endfor %}],
-                        datasets: [{
-                            // y axis
-                            label: 'Serum Stats',
-                            data: [{% for serum_data in serum_data %} {{serum_data.mgdl_phosphorus}}, {% endfor %}],
-                            backgroundColor: [
-                                'rgba(255, 99, 132, 0.2)',
-                                'rgba(54, 162, 235, 0.2)',
-                                'rgba(255, 206, 86, 0.2)',
-                                'rgba(75, 192, 192, 0.2)',
-                                'rgba(153, 102, 255, 0.2)',
-                                'rgba(255, 159, 64, 0.2)'
-                            ],
-                            borderColor: [
-                                'rgba(255, 99, 132, 1)',
-                                'rgba(54, 162, 235, 1)',
-                                'rgba(255, 206, 86, 1)',
-                                'rgba(75, 192, 192, 1)',
-                                'rgba(153, 102, 255, 1)',
-                                'rgba(255, 159, 64, 1)'
-                            ],
-                            borderWidth: 1 
-                        }]
-                    },
-                    options: {
-                        responsive: false,
-                        scales: {
-                            y: {
-                                beginAtZero: true
-                            }
-                        }
-                    }
-                });
-                </script>
-        </div>
-  </div>
-  
-  <div id="Sodium" class="tabcontent">
-    <h3>Tokyo</h3>
-    <p>Tokyo is the capital of Japan.</p>
-    <div>
-        <!-- Add visuals here -->
-                <canvas id="myChart" width="300" height="300"></canvas>
-                <script>
-                const ctx = document.getElementById('myChart').getContext('2d');
-                const myChart = new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        // x axis
-                        labels: [{% for serum_data in serum_data %} '{{serum_data.serum_entry_date}}', {% endfor %}],
-                        datasets: [{
-                            // y axis
-                            label: 'Serum Stats',
-                            data: [{% for serum_data in serum_data %} {{serum_data.meql_sodium}}, {% endfor %}],
-                            backgroundColor: [
-                                'rgba(255, 99, 132, 0.2)',
-                                'rgba(54, 162, 235, 0.2)',
-                                'rgba(255, 206, 86, 0.2)',
-                                'rgba(75, 192, 192, 0.2)',
-                                'rgba(153, 102, 255, 0.2)',
-                                'rgba(255, 159, 64, 0.2)'
-                            ],
-                            borderColor: [
-                                'rgba(255, 99, 132, 1)',
-                                'rgba(54, 162, 235, 1)',
-                                'rgba(255, 206, 86, 1)',
-                                'rgba(75, 192, 192, 1)',
-                                'rgba(153, 102, 255, 1)',
-                                'rgba(255, 159, 64, 1)'
-                            ],
-                            borderWidth: 1 
-                        }]
-                    },
-                    options: {
-                        responsive: false,
-                        scales: {
-                            y: {
-                                beginAtZero: true
-                            }
-                        }
-                    }
-                });
-                </script>
-        </div>
-  </div>
-
-  <div id="Creatinine" class="tabcontent">
-    <h3>London</h3>
-    <p>London is the capital city of England.</p>
-    <div>
-        <!-- Add visuals here -->
-                <canvas id="myChart" width="300" height="300"></canvas>
-                <script>
-                const ctx = document.getElementById('myChart').getContext('2d');
-                const myChart = new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        // x axis
-                        labels: [{% for serum_data in serum_data %} '{{serum_data.serum_entry_date}}', {% endfor %}],
-                        datasets: [{
-                            // y axis
-                            label: 'Serum Stats',
-                            data: [{% for serum_data in serum_data %} {{serum_data.mgdl_creatinine}}, {% endfor %}],
-                            backgroundColor: [
-                                'rgba(255, 99, 132, 0.2)',
-                                'rgba(54, 162, 235, 0.2)',
-                                'rgba(255, 206, 86, 0.2)',
-                                'rgba(75, 192, 192, 0.2)',
-                                'rgba(153, 102, 255, 0.2)',
-                                'rgba(255, 159, 64, 0.2)'
-                            ],
-                            borderColor: [
-                                'rgba(255, 99, 132, 1)',
-                                'rgba(54, 162, 235, 1)',
-                                'rgba(255, 206, 86, 1)',
-                                'rgba(75, 192, 192, 1)',
-                                'rgba(153, 102, 255, 1)',
-                                'rgba(255, 159, 64, 1)'
-                            ],
-                            borderWidth: 1 
-                        }]
-                    },
-                    options: {
-                        responsive: false,
-                        scales: {
-                            y: {
-                                beginAtZero: true
-                            }
-                        }
-                    }
-                });
-                </script>
-        </div>
-  </div>
-  
-  <div id="Albumin" class="tabcontent">
-    <h3>Paris</h3>
-    <p>Paris is the capital of France.</p>
-    <div>
-        <!-- Add visuals here -->
-                <canvas id="myChart" width="300" height="300"></canvas>
-                <script>
-                const ctx = document.getElementById('myChart').getContext('2d');
-                const myChart = new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        // x axis
-                        labels: [{% for serum_data in serum_data %} '{{serum_data.serum_entry_date}}', {% endfor %}],
-                        datasets: [{
-                            // y axis
-                            label: 'Serum Stats',
-                            data: [{% for serum_data in serum_data %} {{serum_data.mgdl_albumin}}, {% endfor %}],
-                            backgroundColor: [
-                                'rgba(255, 99, 132, 0.2)',
-                                'rgba(54, 162, 235, 0.2)',
-                                'rgba(255, 206, 86, 0.2)',
-                                'rgba(75, 192, 192, 0.2)',
-                                'rgba(153, 102, 255, 0.2)',
-                                'rgba(255, 159, 64, 0.2)'
-                            ],
-                            borderColor: [
-                                'rgba(255, 99, 132, 1)',
-                                'rgba(54, 162, 235, 1)',
-                                'rgba(255, 206, 86, 1)',
-                                'rgba(75, 192, 192, 1)',
-                                'rgba(153, 102, 255, 1)',
-                                'rgba(255, 159, 64, 1)'
-                            ],
-                            borderWidth: 1 
-                        }]
-                    },
-                    options: {
-                        responsive: false,
-                        scales: {
-                            y: {
-                                beginAtZero: true
-                            }
-                        }
-                    }
-                });
-                </script>
-        </div>
-  </div>
-  
-  <div id="Blood Sugar" class="tabcontent">
-    <h3>Tokyo</h3>
-    <p>Tokyo is the capital of Japan.</p>
-    <div>
-        <!-- Add visuals here -->
-                <canvas id="myChart" width="300" height="300"></canvas>
-                <script>
-                const ctx = document.getElementById('myChart').getContext('2d');
-                const myChart = new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        // x axis
-                        labels: [{% for serum_data in serum_data %} '{{serum_data.serum_entry_date}}', {% endfor %}],
-                        datasets: [{
-                            // y axis
-                            label: 'Serum Stats',
-                            data: [{% for serum_data in serum_data %} {{serum_data.mgdl_blood_sugar}}, {% endfor %}],
-                            backgroundColor: [
-                                'rgba(255, 99, 132, 0.2)',
-                                'rgba(54, 162, 235, 0.2)',
-                                'rgba(255, 206, 86, 0.2)',
-                                'rgba(75, 192, 192, 0.2)',
-                                'rgba(153, 102, 255, 0.2)',
-                                'rgba(255, 159, 64, 0.2)'
-                            ],
-                            borderColor: [
-                                'rgba(255, 99, 132, 1)',
-                                'rgba(54, 162, 235, 1)',
-                                'rgba(255, 206, 86, 1)',
-                                'rgba(75, 192, 192, 1)',
-                                'rgba(153, 102, 255, 1)',
-                                'rgba(255, 159, 64, 1)'
-                            ],
-                            borderWidth: 1 
-                        }]
-                    },
-                    options: {
-                        responsive: false,
-                        scales: {
-                            y: {
-                                beginAtZero: true
-                            }
-                        }
-                    }
-                });
-                </script>
-        </div>
-  </div>
+ 
 
 
 
