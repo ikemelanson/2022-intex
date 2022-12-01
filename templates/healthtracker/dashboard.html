@@ -146,10 +146,6 @@
                 <hr>
                 <button class = "accordion">Step 1: Add Meal</button>
                 <div class="panel">
-                    <form method="POST">
-                        {% csrf_token %}
-                        {{ Dashboard_form|crispy }}
-                    </br>
                         <input class = 'btn btn-primary btn-block' type='submit' value = 'Add'>
                     </form>
                 </div>

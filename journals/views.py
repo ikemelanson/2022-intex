@@ -41,21 +41,18 @@ def accountRegisterView(request):
     return render(request, 'healthtracker/accountregister.html', context) 
 
 
-def dashboardPageView(request) :
-    person_data = Person.objects.all()
+def dashboardPageView(request, username) :
+    person_data = Person.objects.all(n)
+    # person_data = Person.objects.all(username = request.POST['username'])
     data = Journal_Entry.objects.all()
     serum_data = Serum_Entry.objects.all()
     food_journal_data = Food_Journal.objects.all()
-
+    # person_data.username
     if request.method == 'POST' :
         Dashboard_form = Journal_Entry_Form(request.POST)
         serum_form = Serum_Entry_Form(request.POST)
         Person_form = PersonForm(request.POST)
         Food_journal_form = Food_Journal_Form(request.POST)
-
-        # if Person_form.is_valid():
-        #     Person_form.save()
-        #     return redirect('dashboard')
 
         if Dashboard_form.is_valid() :
             Dashboard_form.save()
@@ -82,7 +79,9 @@ def dashboardPageView(request) :
         'Dashboard_form': Dashboard_form,
         'food_journal_data': food_journal_data,
         'Food_journal_form': Food_journal_form,
+        'username' : username
     }
+
     return render(request, 'healthtracker/dashboard.html', context) 
 
 def profilePageView(request):
@@ -105,7 +104,10 @@ def submituser(request):
 
         return dashboardPageView(request)
 
-
+# def dashboardUsernamePageView(request,username):
+#     if request.method == "POST":
+#         person = Person()
+#         person.frist
 
 # def serumDashboardPageView(request) :
 #     data = Serum_Measure.objects.all()
