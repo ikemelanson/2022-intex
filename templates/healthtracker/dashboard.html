@@ -149,7 +149,7 @@
                     <form method="POST" action="{% url 'submituser' %}" name="personForm">
                         {% csrf_token %}
                         <!--{{ Dashboard_form|crispy }}-->
-                        <input type="text" name="username" value="{{user.username}}" hidden>
+                        <input type="text" name="username" value="{{username}}" hidden>
 
                         <label for "journal_date">Date</label><br>
                         <input type="date" name="journal_date" id="journal_date" default=><br><br>
