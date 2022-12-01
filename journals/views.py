@@ -48,6 +48,8 @@ def dashboardPageView(request, username) :
     serum_data = Serum_Entry.objects.all()
     food_journal_data = Food_Journal.objects.all()
     # person_data.username
+    meal_data = Meal.objects.all()
+
     if request.method == 'POST' :
         Dashboard_form = Journal_Entry_Form(request.POST)
         serum_form = Serum_Entry_Form(request.POST)
@@ -79,7 +81,8 @@ def dashboardPageView(request, username) :
         'Dashboard_form': Dashboard_form,
         'food_journal_data': food_journal_data,
         'Food_journal_form': Food_journal_form,
-        'username' : username
+        'username' : username,
+        'meal_data': meal_data,
     }
 
     return render(request, 'healthtracker/dashboard.html', context) 
