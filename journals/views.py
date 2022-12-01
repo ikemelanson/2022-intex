@@ -42,7 +42,7 @@ def accountRegisterView(request):
 
 
 def dashboardPageView(request, username) :
-    person_data = Person.objects.all(n)
+    person_data = Person.objects.all()
     # person_data = Person.objects.all(username = request.POST['username'])
     data = Journal_Entry.objects.all()
     serum_data = Serum_Entry.objects.all()
