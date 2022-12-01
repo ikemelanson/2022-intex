@@ -81,8 +81,8 @@ DATABASES = {
         'NAME': 'healthtracker',
         'USER' : 'postgres',
         'PASSWORD': '0067Tc0287!',
-        'HOST': 'localhost'#,
-        #'PORT' : '5433'
+        'HOST': 'localhost',
+        'PORT' : '5432'
     }
 }
 
