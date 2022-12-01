@@ -103,10 +103,40 @@
             <h4>Add Personal Information</h4>
             <hr>
             <form method="POST">
-                {% csrf_token %}
+                {% comment %} {% csrf_token %}
                 {{ person_form|crispy }}
             </br>
-                <input class = 'btn btn-primary btn-block' type='submit' value = 'Add'>
+                <input class = 'btn btn-primary btn-block' type='submit' value = 'Add'> {% endcomment %}
+
+                <label for="first_name">First Name:</label>
+                <input type="text" name="first_name" id="first_name" maxlength="30">
+
+                <label for="last_name">Last Name:</label>
+                <input type="text" name="last_name" id="last_name" maxlength="30">
+
+                <label for="age">Age</label>
+                <input type="number" name="age" id="age" min="0">
+                <p>Gender</p>
+                <label for="male">Male</label>
+                <input type="radio" name="gender" value="male" id="male">
+                <label for="female">Female</label>
+                <input type="radio" name="gender" value="female" id="femaale">
+
+                <label for="weight">Weight</label>
+                <input type="number" name="weight" id="weight">
+                <label for="height">Height (inches)</label>
+                <input type="number" name="height" id="height">
+
+                <label for="condition">Condition Level</label>
+                <select name="condition" id="condition">
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+
+                <input type="text" name="username" value="{{user.username}}" hidden>
+
+                <button type="submit">Submit</button>
+
             </form>
           </div>
     </details>

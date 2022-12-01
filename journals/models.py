@@ -11,6 +11,7 @@ class Person(models.Model) :
     height = models.DecimalField(max_digits=4, decimal_places=2)
     condition = models.IntegerField(default=0)
     gender = models.CharField(max_length=10)
+    username = models.CharField(max_length=50)
 
     def __str__(self):
         return (self.first_name)

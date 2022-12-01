@@ -89,6 +89,9 @@ def dashboardPageView(request) :
 
 def profilePageView(request):
     return render(request, 'healthtracker/profile.html') 
+
+# def submituser(request):
+    # request.POST['name']
 # def serumDashboardPageView(request) :
 #     data = Serum_Measure.objects.all()
 #     if request.method == 'POST':
