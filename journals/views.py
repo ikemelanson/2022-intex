@@ -105,7 +105,7 @@ def submituser(request):
 
         person.save()
 
-        return dashboardPageView(request)
+        return dashboardPageView(request, request.POST['username'])
 
 # def dashboardUsernamePageView(request,username):
 #     if request.method == "POST":
