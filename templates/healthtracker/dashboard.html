@@ -74,7 +74,7 @@
         border-top: none;
     }
     .accordion {
-      background-color: #eee;
+      {% comment %} background-color: #eee; {% endcomment %}
       color: #444;
       cursor: pointer;
       padding: 18px;
@@ -87,7 +87,7 @@
     }
     
     .active, .accordion:hover {
-      background-color: #ccc; 
+      {% comment %} background-color: #ccc;  {% endcomment %}
     }
 
     .panel {
@@ -103,38 +103,45 @@
             <h4>Add Personal Information</h4>
             <hr>
             <form method="POST" action="{% url 'submituser' %}" name="personForm">
+                <div class="form-group">
                 {% csrf_token %}
                 <label for="first_name">First Name:</label>
-                <input type="text" name="first_name" id="first_name" maxlength="30">
-
-                <label for="last_name">Last Name:</label><br>
-                <input type="text" name="last_name" id="last_name" maxlength="30"><br><br>
-
-                <label for="age">Age</label><br>
-                <input type="number" name="age" id="age" min="0"><br><br>
-
-                <p>Gender</p>
-                <label for="male">Male</label>
-                <input type="radio" name="gender" value="male" id="male"><br>
-                <label for="female">Female</label>
-                <input type="radio" name="gender" value="female" id="femaale"><br><br>
-
-                <label for="weight">Weight</label><br>
-                <input type="number" name="weight" id="weight"><br><br>
-
-                <label for="height">Height (inches)</label><br>
-                <input type="number" name="height" id="height"><br><br>
-
+                <input type="text" class="form-control" name="first_name" id="first_name" maxlength="30">
+                <br>
+                <label for="last_name">Last Name:</label>
+                <input type="text" class="form-control" name="last_name" id="last_name" maxlength="30">
+                <br>
+                <label for="age">Age</label>
+                <input type="number" name="age" id="age" min="0" class="form-control">
+                <br>
+                <b><p>Gender</p></b>
+                <div class="form-check">
+                    <input type="radio" name="gender" value="male" id="male" class="form-check-input">
+                    <label for="male" class="form-check-label">Male</label>
+                </div>
+                <br>
+                <div class="form-check">
+                    <input type="radio" name="gender" value="female" id="female" class="form-check-input">
+                    <label for="female" class="form-check-label">Female</label>
+                </div>
+                <br>
+                <label for="weight">Weight</label>
+                <input type="number" name="weight" id="weight" class="form-control">
+                <br>
+                <label for="height">Height (inches) </label>
+                <input type="number" name="height" id="height" class="form-control">
+                <br>
+            <div class="form-group">
                 <label for="condition">Condition Level</label>
-                <select name="condition" id="condition">
+                <select name="condition" id="condition" class="form-control">
                     <option value="3">3</option>
                     <option value="4">4</option>
                 </select><br><br>
-
+            </div>
                 <input type="text" name="username" value="{{user.username}}" hidden>
 
-                <button type="submit">Submit</button>
-
+                <button type="submit" class="btn btn-primary btn-block">Submit</button>
+            </div>
             </form>
           </div>
     </details>
@@ -144,31 +151,33 @@
             <div class= "border journalentry">
                 <h4>New Food Journal Entry</h4>
                 <hr>
-                <button class = "accordion">Step 1: Add Meal</button>
+                <button class = "accordion">Step 1: <b>Add Meal</b></button>
                 <div class="panel">
                     <form method="POST" action="{% url 'submituser' %}" name="personForm">
+                        <div class="form-group">
                         {% csrf_token %}
                         <!--{{ Dashboard_form|crispy }}-->
                         <input type="text" name="username" value="{{username}}" hidden>
+                            <br>
+                        <label for "journal_date">Date</label>
+                        <input type="date" name="journal_date" id="journal_date" class="form-control" default=><br>
 
-                        <label for "journal_date">Date</label><br>
-                        <input type="date" name="journal_date" id="journal_date" default=><br><br>
+                        <label for "journal_date">Time</label>
+                        <input type="time" name="journal_time" id="journal_time" class="form-control" default=><br>
 
-                        <label for "journal_date">Time</label><br>
-                        <input type="time" name="journal_time" id="journal_time" default=><br><br>
-
-                        <label for="condition">Meal</label><br>
-                        <select name="meal_id" id="meal_id">
+                        <label for="condition">Meal</label>
+                        <select name="meal_id" id="meal_id" class="form-control">
                             {%for meal in meal_data%}
                                 <option value="description">{{meal.description}}</option>
                             {%endfor%}
-                        </select><br><br>
+                        </select>
                     </br>
                         <input class = 'btn btn-primary btn-block' type='submit' value = 'Add'>
+                </div>
                     </form>
                 </div>
                 <br>
-                <button class = "accordion">Step 2: Add Food</button>
+                <button class = "accordion">Step 2: <b>Add Food</b></button>
                 <div class="panel">
                     <form method="POST">
                         {% csrf_token %}
