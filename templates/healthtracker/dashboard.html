@@ -109,17 +109,20 @@
             <div class= "border journalentry">
                 <h4>New Food Journal Entry</h4>
                 <hr>
-            <form method="POST">
-                {% csrf_token %}
-                {{ person_form|crispy }}
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ Dashboard_form|crispy }}
+                </br>
+                    <input class = 'btn btn-primary btn-block' type='submit' value = 'Add'>
+                </form>
             </div>
-        <div class="journalGraph">
-            <div class="graphs">
-                Hello
+            <div class="journalGraph">
+                <div class="graphs">
+                    Hello
+                </div>
             </div>
         </div>
-    </div>
-  </details>
+    </details>
 <details class="container">
     <summary class="summary btn btn-primary btn-lg btn-block">Blood work Entry</summary>
     <div class="content">
