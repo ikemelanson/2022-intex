@@ -21,3 +21,13 @@ class Serum_Entry_Form(forms.ModelForm):
     class Meta:
         model = Serum_Entry
         fields = '__all__'
+
+class Food_Journal_Form(forms.ModelForm) :
+    class Meta :
+        model = Food_Journal
+        fields = '__all__'
+
+class Food_Form(forms.ModelForm) :
+    class Meta :
+        model = Food
+        fields = '__all__'
