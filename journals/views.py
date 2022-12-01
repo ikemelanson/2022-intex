@@ -16,7 +16,7 @@ def registerPageView(request) :
             Person_form.save()
             # username = form.cleaned_data.get('username')
             # messages.success(request, f'Hi {username}, your account was created successfully')
-            return redirect('/')
+            return redirect('dashboard')
     else :
         Person_form = PersonForm()
     context = {
@@ -53,20 +53,19 @@ def dashboardPageView(request) :
 
         if Person_form.is_valid():
             Person_form.save()
-            return redirect('/')
+            return redirect('dashboard')
 
         if Dashboard_form.is_valid() :
             Dashboard_form.save()
-            return redirect('/')
+            return redirect('dashboard')
         if serum_form.is_valid() :
             serum_form.save()
-            return redirect('/')
+            return redirect('dashboard')
     else :
         Dashboard_form = Journal_Entry_Form()
         serum_form = Serum_Entry_Form()
         Person_form = PersonForm()
 
-        serum_form = Serum_Entry_Form
     context = {
         'person_form': Person_form,
         'person_data': person_data,

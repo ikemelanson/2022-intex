@@ -111,7 +111,10 @@
                 <hr>
             <form method="POST">
                 {% csrf_token %}
-                {{ person_form|crispy }}
+                {{ Dashboard_form|crispy }}
+            </form>
+            <br>
+            <input class = 'btn btn-primary btn-block' type='submit' value = 'Add'>
             </div>
         <div class="journalGraph">
             <div class="graphs">
@@ -124,7 +127,7 @@
     <summary class="summary btn btn-primary btn-lg btn-block">Blood work Entry</summary>
     <div class="content">
         <!-- Serum entry form-->
-        <div class = "border  shadow blood">
+        <div class = "border shadow blood">
             <h4>Add Serum Levels</h4>
             <hr>
             <form method="POST">
@@ -152,11 +155,11 @@
                                 type: 'line',
                                 data: {
                                     // x axis
-                                    labels: [{% for serum_data in serum_data %} '{{serum_data.serum_entry_date}}', {% endfor %}],
+                                    labels: [{% for serum_data in serum_data %} '{{serum_data.serum_entry_date}}', {% endfor %}, 'stage3'],
                                     datasets: [{
                                         // y axis
                                         label: 'Serum Stats',
-                                        data: [{% for serum_data in serum_data %} {{serum_data.mgdl_potassium}}, {% endfor %}],
+                                        data: [{% for serum_data in serum_data %} {{serum_data.mgdl_potassium}}, {% endfor %}, 3.0 ],
                                         backgroundColor: [
                                             'rgba(255, 99, 132, 0.2)',
                                             'rgba(54, 162, 235, 0.2)',

@@ -8,8 +8,12 @@
     --gray-2:#d3d4db;
     --white: #FFFFFF;
 }
+
+.tab {
+    width: 90vh;
+}
 .tablinks{
-    width:10vh;
+    width:14vh;
 }
 .blood {
     border-radius: 10px;
