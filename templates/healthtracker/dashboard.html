@@ -89,24 +89,24 @@
     .active, .accordion:hover {
       background-color: #ccc; 
     }
-    
 </style>
 <details>
     <summary>Journal Entry</summary>
-    <div class="content">
-        <div class= "border journalentry">
-        <h4>New Food Journal Entry</h4>
-        <hr>
-        <form method="POST">
-            {% csrf_token %}
-            {{ Dashboard_form|crispy }}
-        <br><br>
-            <input class='btn btn-primary btn-block' type='submit' value = 'Add'>
-        </form>
-    </div>
-    <div class="journalGraph">
-        <div class="graphs">
-            Hello
+<div class="content">
+    <div class= "border journalentry">
+            <h4>New Food Journal Entry</h4>
+            <hr>
+            <form method="POST">
+                {% csrf_token %}
+                {{ Dashboard_form|crispy }}
+            <br><br>
+                <input class='btn btn-primary btn-block' type='submit' value = 'Add'>
+            </form>
+        </div>
+        <div class="journalGraph">
+            <div class="graphs">
+                Hello
+            </div>
         </div>
     </div>
 </div>
