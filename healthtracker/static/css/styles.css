@@ -8,12 +8,22 @@
     --gray-2:#d3d4db;
     --white: #FFFFFF;
 }
-
+.tablinks{
+    width:10vh;
+}
+.blood {
+    border-radius: 10px;
+    width:38%;
+    padding:30px; 
+    margin:15px;    
+}
 body {
     font-family:'Plus Jakarta Sans', sans-serif;
     background-color: var(--body);
 }
-
+.summary{
+   margin:30px;
+}
 .panel{
     display: flex;
     justify-content: space-around;
@@ -29,7 +39,7 @@ body {
     /* display: inline-block;s */
     /* margin: auto; */
     padding:30px; 
-    margin:15px;
+    /* margin:15px; */
 }
 .entry {
     
@@ -284,7 +294,7 @@ footer .copy {
 
     footer {
         padding-top: 50px;
-        margin-bottom: 44 px;
+        margin-bottom: 44px;
     }
 }
 
