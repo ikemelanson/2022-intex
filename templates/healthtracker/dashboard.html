@@ -146,9 +146,23 @@
                 <hr>
                 <button class = "accordion">Step 1: Add Meal</button>
                 <div class="panel">
-                    <form method="POST">
+                    <form method="POST" action="{% url 'submituser' %}" name="personForm">
                         {% csrf_token %}
-                        {{ Dashboard_form|crispy }}
+                        <!--{{ Dashboard_form|crispy }}-->
+                        <input type="text" name="username" value="{{user.username}}" hidden>
+
+                        <label for "journal_date">Date</label><br>
+                        <input type="date" name="journal_date" id="journal_date" default=><br><br>
+
+                        <label for "journal_date">Time</label><br>
+                        <input type="time" name="journal_time" id="journal_time" default=><br><br>
+
+                        <label for="condition">Meal</label><br>
+                        <select name="meal_id" id="meal_id">
+                            {%for meal in meal_data%}
+                                <option value="description">{{meal.description}}</option>
+                            {%endfor%}
+                        </select><br><br>
                     </br>
                         <input class = 'btn btn-primary btn-block' type='submit' value = 'Add'>
                     </form>
