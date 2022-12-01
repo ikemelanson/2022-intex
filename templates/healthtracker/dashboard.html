@@ -111,7 +111,10 @@
                 <hr>
             <form method="POST">
                 {% csrf_token %}
-                {{ person_form|crispy }}
+                {{ Dashboard_form|crispy }}
+            </br>
+                <input class = 'btn btn-primary btn-block' type='submit' value = 'Add'>
+            </form>
             </div>
         <div class="journalGraph">
             <div class="graphs">
@@ -152,11 +155,11 @@
                                 type: 'line',
                                 data: {
                                     // x axis
-                                    labels: [{% for serum_data in serum_data %} '{{serum_data.serum_entry_date}}', {% endfor %}],
+                                    labels: [{% for serum_data in serum_data %} '{{serum_data.serum_entry_date}}', {% endfor %}, ],
                                     datasets: [{
                                         // y axis
                                         label: 'Serum Stats',
-                                        data: [{% for serum_data in serum_data %} {{serum_data.mgdl_potassium}}, {% endfor %}],
+                                        data: [{% for serum_data in serum_data %} {{serum_data.mgdl_potassium}}, {% endfor %},],
                                         backgroundColor: [
                                             'rgba(255, 99, 132, 0.2)',
                                             'rgba(54, 162, 235, 0.2)',
@@ -174,6 +177,10 @@
                                             'rgba(255, 159, 64, 1)'
                                         ],
                                         borderWidth: 1 
+                                    }, {
+                                        type: 'line',
+                                        label: 'Line Dataset',
+                                        data: [{% for serum_data in serum_data %} 4.3, {% endfor %}, ],
                                     }]
                                 },
                                 options: {
@@ -221,6 +228,10 @@
                                             'rgba(255, 159, 64, 1)'
                                         ],
                                         borderWidth: 1 
+                                    }, {
+                                        type: 'line',
+                                        label: 'Line Dataset',
+                                        data: [{% for serum_data in serum_data %} 3.7, {% endfor %}, ],
                                     }]
                                 },
                                 options: {
@@ -268,6 +279,10 @@
                                             'rgba(255, 159, 64, 1)'
                                         ],
                                         borderWidth: 1 
+                                    }, {
+                                        type: 'line',
+                                        label: 'Line Dataset',
+                                        data: [{% for serum_data in serum_data %} 140, {% endfor %}, ],
                                     }]
                                 },
                                 options: {
@@ -315,6 +330,10 @@
                                             'rgba(255, 159, 64, 1)'
                                         ],
                                         borderWidth: 1 
+                                    }, {
+                                        type: 'line',
+                                        label: 'Line Dataset',
+                                        data: [{% for serum_data in serum_data %} 1.1, {% endfor %}, ],
                                     }]
                                 },
                                 options: {
@@ -362,6 +381,10 @@
                                             'rgba(255, 159, 64, 1)'
                                         ],
                                         borderWidth: 1 
+                                    }, {
+                                        type: 'line',
+                                        label: 'Line Dataset',
+                                        data: [{% for serum_data in serum_data %} 3.5, {% endfor %}, ],
                                     }]
                                 },
                                 options: {
@@ -409,6 +432,10 @@
                                             'rgba(255, 159, 64, 1)'
                                         ],
                                         borderWidth: 1 
+                                    }, {
+                                        type: 'line',
+                                        label: 'Line Dataset',
+                                        data: [{% for serum_data in serum_data %} 85, {% endfor %}, ],
                                     }]
                                 },
                                 options: {
