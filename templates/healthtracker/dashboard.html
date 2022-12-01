@@ -102,12 +102,8 @@
         <div class = "border shadow personal">
             <h4>Add Personal Information</h4>
             <hr>
-            <form method="POST">
-                {% comment %} {% csrf_token %}
-                {{ person_form|crispy }}
-            </br>
-                <input class = 'btn btn-primary btn-block' type='submit' value = 'Add'> {% endcomment %}
-
+            <form method="POST" action="{% url 'submituser' %}" name="personForm">
+                {% csrf_token %}
                 <label for="first_name">First Name:</label>
                 <input type="text" name="first_name" id="first_name" maxlength="30">
 
@@ -146,12 +142,6 @@
             <div class= "border journalentry">
                 <h4>New Food Journal Entry</h4>
                 <hr>
-            <form method="POST">
-                {% csrf_token %}
-                {{ Dashboard_form|crispy }}
-            </form>
-            <br>
-            <input class = 'btn btn-primary btn-block' type='submit' value = 'Add'>
                 <button class = "accordion">Step 1: Add Meal</button>
                 <div class="panel">
                     <form method="POST">
@@ -183,7 +173,7 @@
     <summary class="summary btn btn-primary btn-lg btn-block">Blood work Entry</summary>
     <div class="content">
         <!-- Serum entry form-->
-        <div class = "border shadow blood">
+        <div class = "border  shadow blood">
             <h4>Add Serum Levels</h4>
             <hr>
             <form method="POST">
@@ -211,19 +201,11 @@
                                 type: 'line',
                                 data: {
                                     // x axis
-<<<<<<< HEAD
-                                    labels: [{% for serum_data in serum_data %} '{{serum_data.serum_entry_date}}', {% endfor %}, 'stage3'],
-                                    datasets: [{
-                                        // y axis
-                                        label: 'Serum Stats',
-                                        data: [{% for serum_data in serum_data %} {{serum_data.mgdl_potassium}}, {% endfor %}, 3.0 ],
-=======
                                     labels: [{% for serum_data in serum_data %} '{{serum_data.serum_entry_date}}', {% endfor %}, ],
                                     datasets: [{
                                         // y axis
                                         label: 'Serum Stats',
                                         data: [{% for serum_data in serum_data %} {{serum_data.mgdl_potassium}}, {% endfor %},],
->>>>>>> main
                                         backgroundColor: [
                                             'rgba(255, 99, 132, 0.2)',
                                             'rgba(54, 162, 235, 0.2)',

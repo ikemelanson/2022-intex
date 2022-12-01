@@ -53,9 +53,9 @@ def dashboardPageView(request) :
         Person_form = PersonForm(request.POST)
         Food_journal_form = Food_Journal_Form(request.POST)
 
-        if Person_form.is_valid():
-            Person_form.save()
-            return redirect('dashboard')
+        # if Person_form.is_valid():
+        #     Person_form.save()
+        #     return redirect('dashboard')
 
         if Dashboard_form.is_valid() :
             Dashboard_form.save()
@@ -88,8 +88,25 @@ def dashboardPageView(request) :
 def profilePageView(request):
     return render(request, 'healthtracker/profile.html') 
 
-# def submituser(request):
-    # request.POST['name']
+def submituser(request):
+    if request.method == "POST":
+        person = Person()
+
+        person.first_name = request.POST['first_name']
+        person.last_name = request.POST['last_name']
+        person.age = request.POST['age']
+        person.gender = request.POST['gender']
+        person.weight = request.POST['weight']
+        person.height = request.POST['height']
+        person.condition = request.POST['condition']
+        person.username = request.POST['username']
+
+        person.save()
+
+        return dashboardPageView(request)
+
+
+
 # def serumDashboardPageView(request) :
 #     data = Serum_Measure.objects.all()
 #     if request.method == 'POST':
