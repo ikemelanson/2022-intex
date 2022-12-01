@@ -39,7 +39,10 @@ class Journal_Entry(models.Model) :
 
 class Food(models.Model):
     food_name = models.CharField(max_length=30)
-    food_unit = models.CharField(max_length=30)
+    g_protein = models.DecimalField(max_digits=5, decimal_places=1, default=0)
+    mg_phosphorus = models.DecimalField(max_digits=5, decimal_places=1, default=0)
+    mg_potassium = models.DecimalField(max_digits=5, decimal_places=1, default=0)
+    mg_sodium = models.DecimalField(max_digits=5, decimal_places=1, default=0)
 
     def __str__(self):
         return (self.food_name)
@@ -47,13 +50,10 @@ class Food(models.Model):
 class Food_Journal(models.Model):
     journal_id = models.ForeignKey(Journal_Entry, on_delete=models.CASCADE)
     food_id = models.ForeignKey(Food, on_delete=models.CASCADE)
-    g_protein = models.DecimalField(max_digits=5, decimal_places=1, default=0)
-    mg_phosphorus = models.DecimalField(max_digits=5, decimal_places=1, default=0)
-    mg_potassium = models.DecimalField(max_digits=5, decimal_places=1, default=0)
-    mg_sodium = models.DecimalField(max_digits=5, decimal_places=1, default=0)
+    servings = models.IntegerField(default= 0)
 
     def __str__(self):
-        return (str(self.food_id))
+        return (str(self.servings))
 
 # class Nutrient(models.Model):
 #     nutrient_name = models.CharField(max_length=30)
