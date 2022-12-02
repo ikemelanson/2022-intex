@@ -8,6 +8,14 @@
     --gray-2:#d3d4db;
     --white: #FFFFFF;
 }
+#PotassiumChart{
+    align-items: center;
+    display: inline;
+}
+.PotassiumC {
+    align-items: center;
+    display: inline;
+}
 .foody {
     padding: 30px;
     border-radius: 10px;
