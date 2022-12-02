@@ -37,6 +37,8 @@
             
             <input class="form-control" type="number" step="0.01" name="serum_id" id="serum_id" value="{{serum_entry.id}}" hidden>
             <button type="submit" class="btn btn-primary">Update</button>
+            <a class="alert-link" href="{% url 'viewSerums'%}"><button class="btn btn-primary">Back</button></a>
+            {% comment %} <div class="container"></div> {% endcomment %}
         </form>
     </div>
 </div>
