@@ -1,0 +1,19 @@
+{%extends 'base.html'%}
+{%load static%}
+{%block content%}
+
+<div>
+    {%for serum in serum_data%}
+    <div>
+        {{serum.serum_entry_date}}
+        {{serum.serum_entry_time}}
+        <form method="POST" class="form-group" action="{% url 'editSerum' %}" name="editSerum">
+            {%csrf_token%}
+            <input type="number" name="serum_id" id="serum_id" value="{{serum.id}}" hidden>
+            <button type="submit">Edit</button>
+        </form>
+    </div>
+    {%endfor%}
+</div>
+
+{%endblock%}

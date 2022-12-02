@@ -1,0 +1,36 @@
+{%extends 'base.html'%}
+{%load static%}
+{%block content%}
+
+{%if status == 0%}
+<div class="alert">We're sorry, we do not have information on that food. You can add it below or <a class="alert-link" href="{% url 'newFood'%}">search again</a></div>
+{%endif%}
+
+{%if status > 0%}
+<div class="alert">We try to match your search as close as possible. If the information below is incorrect, you can add the food below or <a class="alert-link" href="{% url 'newFood'%}">search again</a></div>
+{%endif%}
+
+<a class="alert-link" href="{% url 'newFood'%}">Back</a>
+<div class="container">
+    <form class="form-group" method="POST" action="{% url 'commitFood' %}" name="searchForm">
+        {%csrf_token%}
+        <label for="food_name">Food Name</label>
+        <input class="form-control" type="text" name="food_name" id="food_name" value="{{name}}">
+    
+        <label for="gProtein">Protein (g)</label>
+        <input class="form-control" type="text" name="g_protein" id="gProtein" value="{{nutrients.n}}">
+    
+        <label for="mg_phosphorus">Phosphorous (mg)</label>
+        <input class="form-control" type="text" name="mg_phosphorus" id="mg_phosphorus" value="{{nutrients.K}}">
+    
+        <label for="mg_potassium">Potassium (mg)</label>
+        <input class="form-control" type="text" name="mg_potassium" id="mg_potassium" value="{{nutrients.P}}">
+    
+        <label for="mg_sodium">Sodium (mg)</label>
+        <input class="form-control" type="text" name="mg_sodium" id="mg_sodium" value="{{nutrients.a}}">
+    
+        <button type="submit" class="btn btn-primary btn-block">Add Food</button>
+    </form>
+ </div>  
+
+{%endblock%}

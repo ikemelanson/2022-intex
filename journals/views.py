@@ -198,6 +198,26 @@ def commitFood(request):
 
         return redirect("dashboard")
 
+def viewSerums(request):
+
+    serum_data = Serum_Entry.objects.all()
+
+    context = {
+        "serum_data" : serum_data
+    }
+
+    return render(request, "healthtracker/viewSerums.html", context)
+
+
+def editSerum(request):
+    serumEntry = Serum_Entry.objects.get(id = request.POST['serum_id'])
+
+    context = {
+        'serum_entry' : serumEntry
+    }
+
+    return render(request, "healthtracker/editSerum.html", context)
+
 
 # def dashboardUsernamePageView(request,username):
 #     if request.method == "POST":
