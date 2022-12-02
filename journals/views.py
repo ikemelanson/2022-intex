@@ -240,12 +240,31 @@ def commitPerson(request):
 
         return redirect("viewPeople")
 
+def commitJournal(request):
+    if request.method == "POST":
+
+        journal = Journal_Entry.objects.get(journal_id = request.POST['journal_id'])
+
+        journal.journal_date = request.POST['journal_date']
+        journal.journal_time = request.POST['journal_time']
+
+        journal.save()
+
+        return redirect("dashboard")
+
 def delSerum(request):
 
     serum = Serum_Entry.objects.get(id = request.POST['serum_id'])
     serum.delete()
 
     return redirect("viewSerums")
+
+def delJournal(request):
+
+    journal = Journal_Entry.objects.get(journal_id = request.POST['journal_id'])
+    journal.delete()
+
+    return redirect("dashboard")
 
 def delPerson(request):
 
@@ -296,6 +315,19 @@ def editPerson(request):
     }
 
     return render(request, "healthtracker/editPerson.html", context)
+
+
+def editJournal(request):
+    journal = Journal_Entry.objects.get(journal_id = request.POST['journal_id'])
+
+    journal.journal_date = journal.journal_date.strftime('%Y-%m-%d')
+    journal.journal_time = journal.journal_time.strftime('%H:%M:%S')
+
+    context = {
+        'journal' : journal
+    }
+
+    return render(request, "healthtracker/editJournal.html", context)
 
 
 # def dashboardUsernamePageView(request,username):
