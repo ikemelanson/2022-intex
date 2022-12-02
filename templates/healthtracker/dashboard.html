@@ -74,7 +74,7 @@
         border-top: none;
     }
     .accordion {
-      background-color: #eee;
+      {% comment %} background-color: #eee; {% endcomment %}
       color: #444;
       cursor: pointer;
       padding: 18px;
@@ -87,7 +87,7 @@
     }
     
     .active, .accordion:hover {
-      background-color: #ccc; 
+      {% comment %} background-color: #ccc;  {% endcomment %}
     }
 
     .panel {
@@ -103,6 +103,7 @@
             <h4>Add Personal Information</h4>
             <hr>
             <form method="POST" action="{% url 'submituser' %}" name="personForm">
+                <div class="form-group">
                 {% csrf_token %}
                 <label for="first_name">First Name:</label><br>
                 <input type="text" name="first_name" id="first_name" maxlength="30"><br><br>
@@ -126,15 +127,15 @@
                 <input type="number" name="height" id="height"><br><br>
 
                 <label for="condition">Condition Level</label>
-                <select name="condition" id="condition">
+                <select name="condition" id="condition" class="form-control">
                     <option value="3">3</option>
                     <option value="4">4</option>
                 </select><br><br>
-
+            </div>
                 <input type="text" name="username" value="{{user.username}}" hidden>
 
-                <button type="submit">Submit</button>
-
+                <button type="submit" class="btn btn-primary btn-block">Submit</button>
+            </div>
             </form>
           </div>
     </details>
@@ -144,7 +145,7 @@
             <div class= "border journalentry">
                 <h4>New Food Journal Entry</h4>
                 <hr>
-                <button class = "accordion">Step 1: Add Meal</button>
+                <button class = "accordion">Step 1: <b>Add Meal</b></button>
                 <div class="panel">
                     <form method="POST"> <!--action="{% url 'submitmeal' %}" name="personForm">-->
                         {% csrf_token %}
@@ -156,24 +157,22 @@
                             {%endfor%}
                         </select><br><br>
 
-                        <label for "journal_date">Date</label><br>
-                        <input type="date" name="journal_date" id="journal_date" default=><br><br>
+                        <label for "journal_date">Time</label>
+                        <input type="time" name="journal_time" id="journal_time" class="form-control" default=><br>
 
-                        <label for "journal_date">Time</label><br>
-                        <input type="time" name="journal_time" id="journal_time" default=><br><br>
-
-                        <label for="condition">Meal</label><br>
-                        <select name="meal_id" id="meal_id">
+                        <label for="condition">Meal</label>
+                        <select name="meal_id" id="meal_id" class="form-control">
                             {%for meal in meal_data%}
                                 <option value="description">{{meal.description}}</option>
                             {%endfor%}
                         </select><br><br> {% endcomment %}
                     </br>
                         <input class = 'btn btn-primary btn-block' type='submit' value = 'Add'>
+                </div>
                     </form>
                 </div>
                 <br>
-                <button class = "accordion">Step 2: Add Food</button>
+                <button class = "accordion">Step 2: <b>Add Food</b></button>
                 <div class="panel">
                     <form method="POST">
                         {% csrf_token %}
@@ -246,8 +245,12 @@
                                         borderWidth: 1 
                                     }, {
                                         type: 'line',
-                                        label: 'Line Dataset',
-                                        data: [{% for serum_data in serum_data %} 4.3, {% endfor %}, ],
+                                        label: 'Min',
+                                        data: [{% for serum_data in serum_data %} 3.6, {% endfor %}, ],
+                                    }, {
+                                        type: 'line',
+                                        label: 'Max',
+                                        data: [{% for serum_data in serum_data %} 5.2, {% endfor %}, ],
                                     }]
                                 },
                                 options: {
@@ -297,8 +300,12 @@
                                         borderWidth: 1 
                                     }, {
                                         type: 'line',
-                                        label: 'Line Dataset',
-                                        data: [{% for serum_data in serum_data %} 3.7, {% endfor %}, ],
+                                        label: 'Min',
+                                        data: [{% for serum_data in serum_data %} 2.8, {% endfor %}, ],
+                                    }, {
+                                        type: 'line',
+                                        label: 'Max',
+                                        data: [{% for serum_data in serum_data %} 4.5, {% endfor %}, ],
                                     }]
                                 },
                                 options: {
@@ -348,8 +355,12 @@
                                         borderWidth: 1 
                                     }, {
                                         type: 'line',
-                                        label: 'Line Dataset',
-                                        data: [{% for serum_data in serum_data %} 140, {% endfor %}, ],
+                                        label: 'Min',
+                                        data: [{% for serum_data in serum_data %} 135, {% endfor %}, ],
+                                    }, {
+                                        type: 'line',
+                                        label: 'Max',
+                                        data: [{% for serum_data in serum_data %} 145, {% endfor %}, ],
                                     }]
                                 },
                                 options: {
@@ -450,7 +461,7 @@
                                         borderWidth: 1 
                                     }, {
                                         type: 'line',
-                                        label: 'Line Dataset',
+                                        label: 'Min',
                                         data: [{% for serum_data in serum_data %} 3.5, {% endfor %}, ],
                                     }]
                                 },
@@ -501,8 +512,12 @@
                                         borderWidth: 1 
                                     }, {
                                         type: 'line',
-                                        label: 'Line Dataset',
-                                        data: [{% for serum_data in serum_data %} 85, {% endfor %}, ],
+                                        label: 'Min',
+                                        data: [{% for serum_data in serum_data %} 70, {% endfor %}, ],
+                                    }, {
+                                        type: 'line',
+                                        label: 'Max',
+                                        data: [{% for serum_data in serum_data %} 100, {% endfor %}, ],
                                     }]
                                 },
                                 options: {
