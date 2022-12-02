@@ -204,7 +204,7 @@ def commitFood(request):
 
         food.save()
 
-        return redirect("dashboard")
+        return redirect("newFood")
 
 def commitSerum(request):
     if request.method == "POST":
