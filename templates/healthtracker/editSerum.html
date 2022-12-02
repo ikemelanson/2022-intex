@@ -1,41 +1,42 @@
 {%extends 'base.html'%}
 {%load static%}
 {%block content%}
-edit serum entry
+
 <div>
-    <div>
+    <div class="foody shadow">
+        <h3 class="food"> Edit Serum Entry</h3>
         <!-- {{serum_entry.serum_entry_date}}
         {{serum.serum_entry_time}} -->
         <form method="POST" class="form-group" action="{% url 'commitSerum' %}" name="editSerum">
             {%csrf_token%}
 
             <label for="serum_entry_date">Serum Entry Date</label>
-            <input type="text" name="serum_entry_date" value="{{serum_entry.serum_entry_date}}">
+            <input  class="form-control" type="text" name="serum_entry_date" value="{{serum_entry.serum_entry_date}}">
             <br>
-            <label for="serum_entry_time">Serum Entry Date</label>
-            <input type="time" name="serum_entry_time" value="{{serum_entry.serum_entry_time}}">
+            <label for="serum_entry_time">Serum Entry Time</label>
+            <input  class="form-control" type="time" name="serum_entry_time" value="{{serum_entry.serum_entry_time}}">
             <br>
-            <label for="meql_sodium">Serum Entry Date</label>
-            <input type="number" name="meql_sodium" value="{{serum_entry.meql_sodium}}">
+            <label for="meql_sodium">Serum Entry Sodium </label>
+            <input class="form-control" type="number" name="meql_sodium" value="{{serum_entry.meql_sodium}}">
             <br>
-            <label for="mgdl_potassium">Serum Entry Date</label>
-            <input type="number" name="mgdl_potassium" value="{{serum_entry.mgdl_potassium}}">
+            <label for="mgdl_potassium">Serum Entry Potassium</label>
+            <input  class="form-control" type="number" name="mgdl_potassium" value="{{serum_entry.mgdl_potassium}}">
             <br>
-            <label for="mgdl_phosphorus">Serum Entry Date</label>
-            <input type="number" name="mgdl_phosphorus" value="{{serum_entry.mgdl_phosphorus}}">
+            <label for="mgdl_phosphorus">Serum Entry Phosphorous </label>
+            <input class="form-control" type="number" name="mgdl_phosphorus" value="{{serum_entry.mgdl_phosphorus}}">
             <br>
-            <label for="mgdl_creatinine">Serum Entry Date</label>
-            <input type="number" name="mgdl_creatinine" value="{{serum_entry.mgdl_creatinine}}">
+            <label for="mgdl_creatinine">Serum Entry Creatinine </label>
+            <input class="form-control" type="number" name="mgdl_creatinine" value="{{serum_entry.mgdl_creatinine}}">
             <br>
-            <label for="mgdl_albumin">Serum Entry Date</label>
-            <input type="number" name="mgdl_albumin" value="{{serum_entry.mgdl_albumin}}">
+            <label for="mgdl_albumin">Serum Entry Albumin </label>
+            <input class="form-control" type="number" name="mgdl_albumin" value="{{serum_entry.mgdl_albumin}}">
             <br>
-            <label for="mgdl_blood_sugar">Serum Entry Date</label>
-            <input type="number" name="mgdl_blood_sugar" value="{{serum_entry.mgdl_blood_sugar}}">
+            <label for="mgdl_blood_sugar">Serum Entry Blood Sugar</label>
+            <input class="form-control" type="number" name="mgdl_blood_sugar" value="{{serum_entry.mgdl_blood_sugar}}">
             <br>
             
-            <input type="number" name="serum_id" id="serum_id" value="{{serum_entry.id}}" hidden>
-            <button type="submit">Update</button>
+            <input class="form-control" type="number" name="serum_id" id="serum_id" value="{{serum_entry.id}}" hidden>
+            <button type="submit" class="btn btn-primary">Update</button>
         </form>
     </div>
 </div>
