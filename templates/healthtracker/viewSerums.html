@@ -12,6 +12,11 @@
             <input type="number" name="serum_id" id="serum_id" value="{{serum.id}}" hidden>
             <button type="submit">Edit</button>
         </form>
+        <form method="POST" class="form-group" action="{% url 'delSerum' %}" name="delSerum">
+            {%csrf_token%}
+            <input type="number" name="serum_id" id="serum_id" value="{{serum.id}}" hidden>
+            <button type="submit">Delete</button>
+        </form>
     </div>
     {%endfor%}
 </div>

@@ -198,6 +198,31 @@ def commitFood(request):
 
         return redirect("dashboard")
 
+def commitSerum(request):
+    if request.method == "POST":
+
+        serum = Serum_Entry.objects.get(id = request.POST['serum_id'])
+
+        serum.serum_entry_date = request.POST['serum_entry_date']
+        serum.serum_entry_time = request.POST['serum_entry_time']
+        serum.meql_sodium = request.POST['meql_sodium']
+        serum.mgdl_potassium = request.POST['mgdl_potassium']
+        serum.mgdl_phosphorus = request.POST['mgdl_phosphorus']
+        serum.mgdl_creatinine = request.POST['mgdl_creatinine']
+        serum.mgdl_albumin = request.POST['mgdl_albumin']
+        serum.mgdl_blood_sugar = request.POST['mgdl_blood_sugar']
+
+        serum.save()
+
+        return redirect("viewSerums")
+
+def delSerum(request):
+
+    serum = Serum_Entry.objects.get(id = request.POST['serum_id'])
+    serum.delete()
+
+    return redirect("viewSerums")
+
 def viewSerums(request):
 
     serum_data = Serum_Entry.objects.all()
@@ -211,6 +236,9 @@ def viewSerums(request):
 
 def editSerum(request):
     serumEntry = Serum_Entry.objects.get(id = request.POST['serum_id'])
+
+    serumEntry.serum_entry_date = serumEntry.serum_entry_date.strftime('%Y-%m-%d')
+    serumEntry.serum_entry_time = serumEntry.serum_entry_time.strftime('%H:%M:%S')
 
     context = {
         'serum_entry' : serumEntry

@@ -8,6 +8,8 @@ urlpatterns = [
     path("commitFood/", commitFood, name="commitFood"),
     path("viewSerums/", viewSerums, name="viewSerums"),
     path("editSerum/", editSerum, name="editSerum"),
+    path("commitSerum/", commitSerum, name="commitSerum"),
+    path("delSerum/", delSerum, name="delSerum"),
     path("searchFood/", searchFoodPageView, name="searchFood"),
     path("login/", auth_view.LoginView.as_view(template_name='healthtracker/login.html'), name="login"),
     path("accountregister/", accountRegisterView, name="account"),
