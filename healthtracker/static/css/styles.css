@@ -68,10 +68,16 @@ body {
     
 }
 .journalGraph {
-    background-color: blue;
-    width:50%;
+   overflow: scroll;
+   height: 600px;
+    width:60%;
     margin: 13px;
     border-radius: 10px;
+}
+.serums {
+    width: 30%;
+    margin-left: 40px;
+
 }
 .graphs {
     

@@ -8,37 +8,38 @@
     function openCity(evt, cityName) {
         // Declare all variables
         var i, tabcontent, tablinks;
-      
+
         // Get all elements with class="tabcontent" and hide them
         tabcontent = document.getElementsByClassName("tabcontent");
         for (i = 0; i < tabcontent.length; i++) {
-          tabcontent[i].style.display = "none";
+            tabcontent[i].style.display = "none";
         }
-      
+
         // Get all elements with class="tablinks" and remove the class "active"
         tablinks = document.getElementsByClassName("tablinks");
         for (i = 0; i < tablinks.length; i++) {
-          tablinks[i].className = tablinks[i].className.replace(" active", "");
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
         }
-      
+
         // Show the current tab, and add an "active" class to the button that opened the tab
         document.getElementById(cityName).style.display = "block";
         evt.currentTarget.className += " active";
-      }
+    }
 </script>
 
 <style>
     .float-container {
-    border: 3px solid #fff;
-    padding: 20px;
-}
+        border: 3px solid #fff;
+        padding: 20px;
+    }
 
-.float-child {
-    width: 50%;
-    float: left;
-    padding: 20px;
-    border: 2px solid red;
-    }  
+    .float-child {
+        width: 50%;
+        float: left;
+        padding: 20px;
+        border: 2px solid red;
+    }
+
     /* Style the tab */
     .tab {
         overflow: hidden;
@@ -74,21 +75,40 @@
         border: 1px solid #ccc;
         border-top: none;
     }
+
     .accordion {
-      {% comment %} background-color: #eee; {% endcomment %}
-      color: #444;
-      cursor: pointer;
-      padding: 18px;
-      width: 100%;
-      border: none;
-      text-align: left;
-      outline: none;
-      font-size: 15px;
-      transition: 0.4s;
+            {
+            % comment %
+        }
+
+        background-color: #eee;
+
+            {
+            % endcomment %
+        }
+
+        color: #444;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+        transition: 0.4s;
     }
-    
-    .active, .accordion:hover {
-      {% comment %} background-color: #ccc;  {% endcomment %}
+
+    .active,
+    .accordion:hover {
+            {
+            % comment %
+        }
+
+        background-color: #ccc;
+
+            {
+            % endcomment %
+        }
     }
 
     .panel {
@@ -96,14 +116,14 @@
         background-color: white;
         display: none;
         overflow: hidden;
-      }
+    }
 </style>
-    <details class="container">
-        <summary class="summary btn btn-primary btn-lg btn-block"> Personal Information </summary>
-        <div class = "border shadow personal">
-            <h4>Add Personal Information</h4>
-            <hr>
-            <form method="POST" action="{% url 'submituser' %}" name="personForm">
+<details class="container">
+    <summary class="summary btn btn-primary btn-lg btn-block"> Personal Information </summary>
+    <div class="border shadow personal">
+        <h4>Add Personal Information</h4>
+        <hr>
+        <form method="POST" action="{% url 'submituser' %}" name="personForm">
             <div class="form-group">
                 {% csrf_token %}
                 <label for="first_name">First Name:</label><br>
@@ -134,522 +154,533 @@
                     <option value="4">4</option>
                 </select><br>
             </div>
-                {% comment %} <input type="text" name="username" value="{{user.username}}" hidden> {% endcomment %}
+            {% comment %} <input type="text" name="username" value="{{user.username}}" hidden> {% endcomment %}
 
-                <button type="submit" class="btn btn-primary btn-block">Submit</button>
-            </div>
-            </form>
-          </div>
-          <a href="{% url 'viewPeople'%}"><button type="button" class="btn btn-primary">Edit Personal Information</button></a>
-    </details>
-    <details class="container">
-        <summary class="summary btn btn-primary btn-lg btn-block">Journal Entry</summary>
-        <div class="content">
-            <div class= "border journalentry">
-                <h4>New Food Journal Entry</h4>
-                <hr>
-                <button class = "accordion">Step 1: <b>Add Meal</b></button>
-                <div class="panel">
-                    <form method="POST"> <!--action="{% url 'submitmeal' %}" name="personForm">-->
-                        {% csrf_token %}
-                        {{ Dashboard_form|crispy }}
-                        {% comment %} <label for="person_id">Person</label><br>
-                        <select name="person_id" id="person_id">
-                            {%for person in data%}
-                                <option value="first_name">{{person.first_name}}</option>
-                            {%endfor%}
-                        </select><br><br>
+            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+    </div>
+    </form>
+    </div>
+    <div class="foody">
+    <a href="{% url 'viewPeople'%}"><button type="button btn" class="btn btn-primary btn-block">Edit Personal Information</button></a>
+    </div>
+</details>
+<details class="container">
+    <summary class="summary btn btn-primary btn-lg btn-block">Journal Entry</summary>
+    <div class="content">
+        <div class="border journalentry">
+            <h4>New Food Journal Entry</h4>
+            <hr>
+            <button class="accordion">Step 1: <b>Add Meal</b></button>
+            <div class="panel">
+                <form method="POST">
+                    <!--action="{% url 'submitmeal' %}" name="personForm">-->
+                    {% csrf_token %}
+                    {{ Dashboard_form|crispy }}
+                    {% comment %} <label for="person_id">Person</label><br>
+                    <select name="person_id" id="person_id">
+                        {%for person in data%}
+                        <option value="first_name">{{person.first_name}}</option>
+                        {%endfor%}
+                    </select><br><br>
 
-                        <label for "journal_date">Time</label>
-                        <input type="time" name="journal_time" id="journal_time" class="form-control" default=><br>
+                    <label for "journal_date">Time</label>
+                    <input type="time" name="journal_time" id="journal_time" class="form-control" default=><br>
 
-                        <label for="condition">Meal</label>
-                        <select name="meal_id" id="meal_id" class="form-control">
-                            {%for meal in meal_data%}
-                                <option value="description">{{meal.description}}</option>
-                            {%endfor%}
-                        </select><br><br> {% endcomment %}
+                    <label for="condition">Meal</label>
+                    <select name="meal_id" id="meal_id" class="form-control">
+                        {%for meal in meal_data%}
+                        <option value="description">{{meal.description}}</option>
+                        {%endfor%}
+                    </select><br><br> {% endcomment %}
                     </br>
-                        <input class = 'btn btn-primary btn-block' type='submit' value = 'Add'>
-                    </form>
-                </div>
-                <br>
-                <button class = "accordion">Step 2: <b>Add Food Amount</b></button>
-                <div class="panel">
-                    <form method="POST">
-                        {% csrf_token %}
-                        {{ Food_journal_form|crispy }}
-                    </br>
-                        <input class = 'btn btn-primary btn-block' type='submit' value = 'Add'>
-                    </form>
-                    <br>
-                        <a href="{% url 'newFood'%}"><button type="button" class="btn btn-primary btn-block">Search New Food</button></a>
-                </div>
-                <br>
+                    <input class='btn btn-primary btn-block' type='submit' value='Add'>
+                </form>
             </div>
-            <div class="journalGraph">
-                <div class="graphs">
-                    {% for entry in data %}
-                        <button class = "accordion">{{entry.meal_id }}, {{entry.journal_date}}</button>
-                        <div class="panel">
-                        {% for food in food_journal_data %}
-                            {% if food.journal_id_id == entry.journal_id %}
-                                {{food.food_id}}: {{food.servings}} servings <br>&nbsp&nbsp&nbsp
-                                {% for nutrient in food_data %}
-                                    {% if nutrient.food_id == food.food_id_id%}
-                                        Protein: {{ nutrient.g_protein }}g|
-                                        Phos: {{ nutrient.mg_phosphorus }}mg |
-                                        K: {{ nutrient.mg_potassium }}mg |
-                                        Sodium: {{ nutrient.mg_sodium }}mg
-                                    {% endif %}
-                                {% endfor %}<br>
-                            {% endif %}
-                        {% endfor %} <br>
-                        TOTAL NUTRIENTS: {{food.servings}}<br>
-                        {% with 0 as totProt %}
-                        {% with 0 as totPhos %}
-                        {% with 0 as totPotas %}
-                        {% with 0 as totSod %}
-                        {% for food in food_journal_data %}
-                            {% if food.journal_id_id == entry.journal_id %}
-                                {% for nutrient in food_data %}
-                                    {% if nutrient.food_id == food.food_id_id%}
-                                        {% with food.servings|mul:nutrient.g_protein as protein %}
-                                        {% with protein|addition:totProt as totPro %}
+            <button class="accordion">Step 2: <b>Add Food Amount</b></button>
+            <div class="panel">
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ Food_journal_form|crispy }}
+                    </br>
+                    <input class='btn btn-primary btn-block' type='submit' value='Add'>
+                </form>
+                <br>
+                <a href="{% url 'newFood'%}"><button type="button" class="btn btn-primary btn-block">Search New
+                        Food</button></a>
+            </div>
+            <br>
+        </div>
+        <div class="journalGraph">
+            <div class="graphs">
+                {% for entry in data %}
+                <button class="accordion">{{entry.meal_id }}, {{entry.journal_date}}</button>
+                <div class="panel">
+                    {% for food in food_journal_data %}
+                    {% if food.journal_id_id == entry.journal_id %}
+                    {{food.food_id}}: {{food.servings}} servings <br>&nbsp&nbsp&nbsp
+                    {% for nutrient in food_data %}
+                    {% if nutrient.food_id == food.food_id_id%}
+                    Protein: {{ nutrient.g_protein }}g|
+                    Phos: {{ nutrient.mg_phosphorus }}mg |
+                    K: {{ nutrient.mg_potassium }}mg |
+                    Sodium: {{ nutrient.mg_sodium }}mg
+                    {% endif %}
+                    {% endfor %}<br>
+                    {% endif %}
+                    {% endfor %} <br>
+                    TOTAL NUTRIENTS: {{food.servings}}<br>
+                    {% with 0 as totProt %}
+                    {% with 0 as totPhos %}
+                    {% with 0 as totPotas %}
+                    {% with 0 as totSod %}
+                    {% for food in food_journal_data %}
+                    {% if food.journal_id_id == entry.journal_id %}
+                    {% for nutrient in food_data %}
+                    {% if nutrient.food_id == food.food_id_id%}
+                    {% with food.servings|mul:nutrient.g_protein as protein %}
+                    {% with protein|addition:totProt as totPro %}
 
-                                        {% with food.servings|mul:nutrient.mg_phosphorus as phos %}
-                                        {% with phos|addition:totPhos as totPhos %}
+                    {% with food.servings|mul:nutrient.mg_phosphorus as phos %}
+                    {% with phos|addition:totPhos as totPhos %}
 
-                                        {% with food.servings|mul:nutrient.mg_potassium as potas %}
-                                        {% with potas|addition:totPotas as totPotas %}
+                    {% with food.servings|mul:nutrient.mg_potassium as potas %}
+                    {% with potas|addition:totPotas as totPotas %}
 
-                                        {% with food.servings|mul:nutrient.mg_sodium as sod %}
-                                        {% with sod|addition:totSod as totSod %}
-                                        {% comment %} {{ food.servings|mul:nutrient.g_protein|addition:totProt }} {% endcomment %}
-                                        {% comment %} {{ food.servings|mul:nutrient.mg_phosphorus}}
-                                        {{ food.servings|mul:nutrient.mg_potassium}}
-                                        {{ food.servings|mul:nutrient.mg_sodium}} {% endcomment %}
-                                        {{food.food_id}}:<br>&nbsp&nbsp&nbsp
-                                        Protein: {{ totPro }}
-                                        Phosphorous: {{ totPhos }}
-                                        Potassium: {{ totPotas }}
-                                        Sodium: {{ totSod }}
-                                        {% endwith %}
-                                        {% endwith %}
-                                        {% endwith %}
-                                        {% endwith %}
-                                        {% endwith %}
-                                        {% endwith %}
-                                        {% endwith %}
-                                        {% endwith %}
-                                    {% endif %}
-                                {% endfor %}<br>
-                            {% endif %}
-                        {% endfor %} <br>
-                        {% endwith %}
-                        {% endwith %}
-                        {% endwith %}
-                        {% endwith %}
+                    {% with food.servings|mul:nutrient.mg_sodium as sod %}
+                    {% with sod|addition:totSod as totSod %}
+                    {% comment %} {{ food.servings|mul:nutrient.g_protein|addition:totProt }} {% endcomment %}
+                    {% comment %} {{ food.servings|mul:nutrient.mg_phosphorus}}
+                    {{ food.servings|mul:nutrient.mg_potassium}}
+                    {{ food.servings|mul:nutrient.mg_sodium}} {% endcomment %}
+                    {{food.food_id}}:<br>&nbsp&nbsp&nbsp
+                    Protein: {{ totPro }}
+                    Phosphorous: {{ totPhos }}
+                    Potassium: {{ totPotas }}
+                    Sodium: {{ totSod }}
+                    {% endwith %}
+                    {% endwith %}
+                    {% endwith %}
+                    {% endwith %}
+                    {% endwith %}
+                    {% endwith %}
+                    {% endwith %}
+                    {% endwith %}
+                    {% endif %}
+                    {% endfor %}<br>
+                    {% endif %}
+                    {% endfor %} <br>
+                    {% endwith %}
+                    {% endwith %}
+                    {% endwith %}
+                    {% endwith %}
 
-
-                        </div>
-                    {% endfor %}
+                    <div>
+                        <form method="POST" class="form-group" action="{% url 'editJournal' %}" name="editSerum">
+                            {%csrf_token%}
+                            <input type="number" name="journal_id" id="journal_id" value="{{entry.journal_id}}" hidden>
+                            <button type="submit" class="btn btn-primary">Edit Journal</button>
+                        </form>
+                        <form method="POST" class="form-group" action="{% url 'delJournal' %}" name="delJournal">
+                            {%csrf_token%}
+                            <input type="number" name="journal_id" id="journal_id" value="{{entry.journal_id}}" hidden>
+                            <button type="submit" class="btn btn-primary">Delete Journal</button>
+                        </form>
+                    </div>
                 </div>
+
+                {% endfor %}
             </div>
         </div>
-    </details>
+    </div>
+</details>
 <details class="container">
     <summary class="summary btn btn-primary btn-lg btn-block">Blood Work Entry</summary>
     {%for serum_data in serum_data%}
-        {%if forloop.last%}
-            <div class="container">
-            {%if serum_data.potassium < 3.6%}
-            <div class="alert"> Your Potassium is low. We recommend eating bananas!</div>
-            {%endif%}
-            {%if serum_data.mgdl_potassium > 5.2%}
-            <div class="alert"> Your Potassium is high. We recommend eating less potatoes!</div>
-            {%endif%}
-            {%if serum_data.mgdl_phosphorus < 2.8%}
-            <div class="alert"> Your Phosphorous is low. We recommend eating more beans!</div>
-            {%endif%}
-            {%if serum_data.mgdl_phosphorus > 4.5%}
-            <div class="alert"> Your Phosphorous is high. We recommend eating less lentils!</div>
-            {%endif%}
-            {%if serum_data.meql_sodium < 135%}
-            <div class="alert"> Your Sodium is low. We recommend eating more pizza!</div>
+    {%if forloop.last%}
+    <div class="container">
+        {%if serum_data.potassium < 3.6%} <div class="alert"> Your Potassium is low. We recommend eating bananas!</div>
+    {%endif%}
+    {%if serum_data.mgdl_potassium > 5.2%}
+    <div class="alert"> Your Potassium is high. We recommend eating less potatoes!</div>
+    {%endif%}
+    {%if serum_data.mgdl_phosphorus < 2.8%} <div class="alert"> Your Phosphorous is low. We recommend eating more beans!
+        </div>
+        {%endif%}
+        {%if serum_data.mgdl_phosphorus > 4.5%}
+        <div class="alert"> Your Phosphorous is high. We recommend eating less lentils!</div>
+        {%endif%}
+        {%if serum_data.meql_sodium < 135%} <div class="alert"> Your Sodium is low. We recommend eating more pizza!
+            </div>
             {%endif%}
             {%if serum_data.meql_sodium > 145%}
             <div class="alert"> Your Sodium is high. We recommend eating less chips!</div>
             {%endif%}
-            {%if serum_data.mgdl_creatinine < 1.3%}
-            <div class="alert"> Your Creatinine is low. We recommend eating more steak!</div>
-            {%endif%}
-            {%if serum_data.mgdl_albumin < 3.5%}
-            <div class="alert"> Your Albumin is low. We recommend drinkign more milk!</div>
-            {%endif%}
-            {%if serum_data.mgdl_blood_sugar < 70%}
-            <div class="alert">Your Blood Sugar is low. We recommend eating more donuts!</div>
-            {%endif%}
-            {%if serum_data.mgdl_blood_sugar > 100%}
-            <div class="alert">Your Blood Sugar is high. We recommend eating less candy!</div>
-            {%endif%}
-            </div>
-        {%endif%}
-    {%endfor%}
-    <div class="content">
-        <!-- Serum entry form-->
-        <div class = "border  shadow blood">
-            <h4>Add Serum Levels</h4>
-            <hr>
-            <form method="POST">
-                {% csrf_token %}
-                {{ serum_form|crispy }}
-                <br><br>
-                <input class = 'btn btn-primary btn-block' type='submit' value = 'Add'>
-            </form>
-        </div>
-    
-        <div class="tab">
-            <button class="tablinks" onclick="openCity(event, 'Potassium')">Potassium</button>
-            <button class="tablinks" onclick="openCity(event, 'Phosphorous')">Phosphorous</button>
-            <button class="tablinks" onclick="openCity(event, 'Sodium')">Sodium</button>
-            <button class="tablinks" onclick="openCity(event, 'Creatinine')">Creatinine</button>
-            <button class="tablinks" onclick="openCity(event, 'Albumin')">Albumin</button>
-            <button class="tablinks" onclick="openCity(event, 'Blood Sugar')">Blood Sugar</button>
+            {%if serum_data.mgdl_creatinine < 1.3%} <div class="alert"> Your Creatinine is low. We recommend eating more
+                steak!</div>
+                {%endif%}
+                {%if serum_data.mgdl_albumin < 3.5%} <div class="alert"> Your Albumin is low. We recommend drinkign more
+                    milk!</div>
+                    {%endif%}
+                    {%if serum_data.mgdl_blood_sugar < 70%} <div class="alert">Your Blood Sugar is low. We recommend
+                        eating more donuts!</div>
+                        {%endif%}
+                        {%if serum_data.mgdl_blood_sugar > 100%}
+                        <div class="alert">Your Blood Sugar is high. We recommend eating less candy!</div>
+                        {%endif%}
+                        </div>
+                        {%endif%}
+                        {%endfor%}
+                        <div class="content">
+                            <!-- Serum entry form-->
+                            <div class="border  shadow blood">
+                                <h4>Add Serum Levels</h4>
+                                <hr>
+                                <form method="POST">
+                                    {% csrf_token %}
+                                    {{ serum_form|crispy }}
+                                    <br><br>
+                                    <input class='btn btn-primary btn-block' type='submit' value='Add'>
+                                </form>
+                            </div>
 
-            <div id="Potassium" class="tabcontent">
-                <div>
-                    <!-- Add visuals here -->
-                            <canvas id="PotassiumChart" width="500" height="500" class="PotassiumC"></canvas>
-                            <script>
-                            const ctx = document.getElementById('PotassiumChart').getContext('2d');
-                            const PotassiumChart = new Chart(ctx, {
-                                type: 'line',
-                                data: {
-                                    // x axis
-                                    labels: [{% for serum_data in serum_data %} '{{serum_data.serum_entry_date}}', {% endfor %}, ],
-                                    datasets: [{
-                                        // y axis
-                                        label: 'Serum Stats',
-                                        data: [{% for serum_data in serum_data %} {{serum_data.mgdl_potassium}}, {% endfor %},],
-                                        backgroundColor: [
-                                            'rgba(173, 216, 230)'
-                                        ],
-                                        borderColor: [
-                                            'rgba(173, 216, 230)'
-                                        ], 
+                            <div class="tab">
+                                <button class="tablinks" onclick="openCity(event, 'Potassium')">Potassium</button>
+                                <button class="tablinks" onclick="openCity(event, 'Phosphorous')">Phosphorous</button>
+                                <button class="tablinks" onclick="openCity(event, 'Sodium')">Sodium</button>
+                                <button class="tablinks" onclick="openCity(event, 'Creatinine')">Creatinine</button>
+                                <button class="tablinks" onclick="openCity(event, 'Albumin')">Albumin</button>
+                                <button class="tablinks" onclick="openCity(event, 'Blood Sugar')">Blood Sugar</button>
+                                <div id="Potassium" class="tabcontent">
+                                    <div>
+                                        <!-- Add visuals here -->
+                                        <canvas id="PotassiumChart" width="500" height="500"
+                                            class="PotassiumC"></canvas>
+                                        <script>
+                                            const ctx = document.getElementById('PotassiumChart').getContext('2d');
+                                            const PotassiumChart = new Chart(ctx, {
+                                                type: 'line',
+                                                data: {
+                                                    // x axis
+                                                    labels: [{% for serum_data in serum_data %} '{{serum_data.serum_entry_date}}', {% endfor %}, ],
+                                            datasets: [{
+                                                // y axis
+                                                label: 'Serum Stats',
+                                                data: [{% for serum_data in serum_data %} {{ serum_data.mgdl_potassium }}, {% endfor %},],
+                                                backgroundColor: [
+                                                    'rgba(173, 216, 230)'
+                                                ],
+                                                    borderColor: [
+                                                        'rgba(173, 216, 230)'
+                                                    ], 
                                     }, {
-                                        type: 'line',
-                                        label: 'Min',
-                                        data: [{% for serum_data in serum_data %} 3.6, {% endfor %}, ],
-                                        borderColor: [
-                                        'rgba(0, 235, 0)'
-                                        ],
-                                        borderWidth: 1
+                                                type: 'line',
+                                                    label: 'Min',
+                                                        data: [{% for serum_data in serum_data %} 3.6, {% endfor %}, ],
+                                            borderColor: [
+                                                'rgba(0, 235, 0)'
+                                            ],
+                                                borderWidth: 1
                                     }, {
-                                        type: 'line',
-                                        label: 'Max',
-                                        data: [{% for serum_data in serum_data %} 5.2, {% endfor %}, ],
-                                        borderColor: [
-                                            'rgba(235, 0, 0)'
-                                        ],
-                                        borderWidth: 1
+                                                type: 'line',
+                                                    label: 'Max',
+                                                        data: [{% for serum_data in serum_data %} 5.2, {% endfor %}, ],
+                                            borderColor: [
+                                                'rgba(235, 0, 0)'
+                                            ],
+                                                borderWidth: 1
                                     }]
                                 },
-                                options: {
-                                    responsive: false,
-                                    scales: {
-                                        y: {
-                                            beginAtZero: true
-                                        }
-                                    }
-                                }
+                                            options: {
+                                                responsive: false,
+                                                    scales: {
+                                                    y: {
+                                                        beginAtZero: true
+                                                    }
+                                                }
+                                            }
                             });
-                            </script>
-                    </div>
-              </div>
-              
-              <div id="Phosphorous" class="tabcontent">
-                <div>
-                    <!-- Add visuals here -->
-                            <canvas id="PChart" width="500" height="500"></canvas>
-                            <script>
-                            const ctx1 = document.getElementById('PChart').getContext('2d');
-                            const PChart = new Chart(ctx1, {
-                                type: 'line',
-                                data: {
-                                    // x axis
-                                    labels: [{% for serum_data in serum_data %} '{{serum_data.serum_entry_date}}', {% endfor %}],
-                                    datasets: [{
-                                        // y axis
-                                        label: 'Serum Stats',
-                                        data: [{% for serum_data in serum_data %} {{serum_data.mgdl_phosphorus}}, {% endfor %}],
-                                        backgroundColor: [
-                                            'rgba(173, 216, 230)'
-                                        ],
-                                        borderColor: [
-                                            'rgba(173, 216, 230)'
-                                        ], 
-                                    }, {
-                                        type: 'line',
-                                        label: 'Min',
-                                        data: [{% for serum_data in serum_data %} 2.8, {% endfor %}, ],
-                                        borderColor: [
-                                        'rgba(0, 235, 0)'
-                                        ],
-                                        borderWidth: 1
-                                    }, {
-                                        type: 'line',
-                                        label: 'Max',
-                                        data: [{% for serum_data in serum_data %} 4.5, {% endfor %}, ],
-                                        borderColor: [
-                                            'rgba(235, 0, 0)'
-                                        ],
-                                        borderWidth: 1
-                                    }]
-                                },
-                                options: {
-                                    responsive: false,
-                                    scales: {
-                                        y: {
-                                            beginAtZero: true
-                                        }
-                                    }
-                                }
-                            });
-                            </script>
-                    </div>
-              </div>
-              
-              <div id="Sodium" class="tabcontent">
-                <div>
-                    <!-- Add visuals here -->
-                            <canvas id="SodiumChart" width="500" height="500"></canvas>
-                            <script>
-                            const ctx2 = document.getElementById('SodiumChart').getContext('2d');
-                            const SodiumChart = new Chart(ctx2, {
-                                type: 'line',
-                                data: {
-                                    // x axis
-                                    labels: [{% for serum_data in serum_data %} '{{serum_data.serum_entry_date}}', {% endfor %}],
-                                    datasets: [{
-                                        // y axis
-                                        label: 'Serum Stats',
-                                        data: [{% for serum_data in serum_data %} {{serum_data.meql_sodium}}, {% endfor %}],
-                                        backgroundColor: [
-                                            'rgba(173, 216, 230)'
-                                        ],
-                                        borderColor: [
-                                            'rgba(173, 216, 230)'
-                                        ], 
-                                    }, {
-                                        type: 'line',
-                                        label: 'Min',
-                                        data: [{% for serum_data in serum_data %} 135, {% endfor %}, ],
-                                        borderColor: [
-                                        'rgba(0, 235, 0)'
-                                        ],
-                                        borderWidth: 1
-                                    }, {
-                                        type: 'line',
-                                        label: 'Max',
-                                        data: [{% for serum_data in serum_data %} 145, {% endfor %}, ],
-                                        borderColor: [
-                                            'rgba(235, 0, 0)'
-                                        ],
-                                        borderWidth: 1
-                                    }]
-                                },
-                                options: {
-                                    responsive: false,
-                                    scales: {
-                                        y: {
-                                            beginAtZero: true
-                                        }
-                                    }
-                                }
-                            });
-                            </script>
-                    </div>
-              </div>
-            
-              <div id="Creatinine" class="tabcontent">
-                <div>
-                    <!-- Add visuals here -->
-                            <canvas id="CreatinineChart" width="500" height="500"></canvas>
-                            <script>
-                            const ctx3 = document.getElementById('CreatinineChart').getContext('2d');
-                            const CreatinineChart = new Chart(ctx3, {
-                                type: 'line',
-                                data: {
-                                    // x axis
-                                    labels: [{% for serum_data in serum_data %} '{{serum_data.serum_entry_date}}', {% endfor %}],
-                                    datasets: [{
-                                        // y axis
-                                        label: 'Serum Stats',
-                                        data: [{% for serum_data in serum_data %} {{serum_data.mgdl_creatinine}}, {% endfor %}],
-                                        backgroundColor: [
-                                            'rgba(173, 216, 230)'
-                                        ],
-                                        borderColor: [
-                                            'rgba(173, 216, 230)'
-                                        ], 
-                                    }, {
-                                        type: 'line',
-                                        label: 'Female Min',
-                                        data: [{% for serum_data in serum_data %} 1.1, {% endfor %}, ],
-                                        borderColor: [
-                                        'rgba(0, 235, 0)'
-                                        ],
-                                        borderWidth: 1
-                                    }, {
-                                        type: 'line',
-                                        label: 'Male Min',
-                                        data: [{% for serum_data in serum_data %} 1.3, {% endfor %}, ],
-                                        borderColor: [
-                                        'rgba(235, 0, 0)'
-                                        ],
-                                        borderWidth: 1
-                                    }]
-                                },
-                                options: {
-                                    responsive: false,
-                                    scales: {
-                                        y: {
-                                            beginAtZero: true
-                                        }
-                                    }
-                                }
-                            });
-                            </script>
-                    </div>
-              </div>
-              
-              <div id="Albumin" class="tabcontent">
-                <div>
-                    <!-- Add visuals here -->
-                            <canvas id="AlbuminChart" width="500" height="500"></canvas>
-                            <script>
-                            const ctx4 = document.getElementById('AlbuminChart').getContext('2d');
-                            const AlbuminChart = new Chart(ctx4, {
-                                type: 'line',
-                                data: {
-                                    // x axis
-                                    labels: [{% for serum_data in serum_data %} '{{serum_data.serum_entry_date}}', {% endfor %}],
-                                    datasets: [{
-                                        // y axis
-                                        label: 'Serum Stats',
-                                        data: [{% for serum_data in serum_data %} {{serum_data.mgdl_albumin}}, {% endfor %}],
-                                        backgroundColor: [
-                                            'rgba(173, 216, 230)'
-                                        ],
-                                        borderColor: [
-                                            'rgba(173, 216, 230)'
-                                        ], 
-                                    }, {
-                                        type: 'line',
-                                        label: 'Min',
-                                        data: [{% for serum_data in serum_data %} 3.5, {% endfor %}, ],
-                                        borderColor: [
-                                        'rgba(0, 235, 0)'
-                                        ],
-                                        borderWidth: 1
-                                    }]
-                                },
-                                options: {
-                                    responsive: false,
-                                    scales: {
-                                        y: {
-                                            beginAtZero: true
-                                        }
-                                    }
-                                }
-                            });
-                            </script>
-                    </div>
-              </div>
-              
-              <div id="Blood Sugar" class="tabcontent">
-                <div>
-                    <!-- Add visuals here -->
-                            <canvas id="BSChart" width="500" height="500"></canvas>
-                            <script>
-                            const ctx5 = document.getElementById('BSChart').getContext('2d');
-                            const BSChart = new Chart(ctx5, {
-                                type: 'line',
-                                data: {
-                                    // x axis
-                                    labels: [{% for serum_data in serum_data %} '{{serum_data.serum_entry_date}}', {% endfor %}],
-                                    datasets: [{
-                                        // y axis
-                                        label: 'Serum Stats',
-                                        data: [{% for serum_data in serum_data %} {{serum_data.mgdl_blood_sugar}}, {% endfor %}],
-                                        backgroundColor: [
-                                            'rgba(173, 216, 230)'
-                                        ],
-                                        borderColor: [
-                                            'rgba(173, 216, 230)'
-                                        ], 
-                                    }, {
-                                        type: 'line',
-                                        label: 'Min',
-                                        data: [{% for serum_data in serum_data %} 70, {% endfor %}, ],
-                                        borderColor: [
-                                        'rgba(0, 235, 0)'
-                                        ],
-                                        borderWidth: 1
-                                    }, {
-                                        type: 'line',
-                                        label: 'Max',
-                                        data: [{% for serum_data in serum_data %} 100, {% endfor %}, ],
-                                        borderColor: [
-                                            'rgba(235, 0, 0)'
-                                        ],
-                                        borderWidth: 1
-                                    }]
-                                },
-                                options: {
-                                    responsive: false,
-                                    scales: {
-                                        y: {
-                                            beginAtZero: true
-                                        }
-                                    }
-                                }
-                            });
-                            </script>
-                    </div>
-              </div>
-          </div>
-        <!-- According Info-->
+                                        </script>
+                                    </div>
+                                </div>
 
-    </div>
-    <div class="container">
-        <a href="{%url 'viewSerums'%}"><button class="btn btn-primary">View All Serum Entries</button></a>
-    </div>
-  </details>
-<br>
+                                <div id="Phosphorous" class="tabcontent">
+                                    <div>
+                                        <!-- Add visuals here -->
+                                        <canvas id="PChart" width="500" height="500"></canvas>
+                                        <script>
+                                            const ctx1 = document.getElementById('PChart').getContext('2d');
+                                            const PChart = new Chart(ctx1, {
+                                                type: 'line',
+                                                data: {
+                                                    // x axis
+                                                    labels: [{% for serum_data in serum_data %} '{{serum_data.serum_entry_date}}', {% endfor %}],
+                                            datasets: [{
+                                                // y axis
+                                                label: 'Serum Stats',
+                                                data: [{% for serum_data in serum_data %} {{ serum_data.mgdl_phosphorus }}, {% endfor %}],
+                                                backgroundColor: [
+                                                    'rgba(173, 216, 230)'
+                                                ],
+                                                    borderColor: [
+                                                        'rgba(173, 216, 230)'
+                                                    ], 
+                                    }, {
+                                                type: 'line',
+                                                    label: 'Min',
+                                                        data: [{% for serum_data in serum_data %} 2.8, {% endfor %}, ],
+                                            borderColor: [
+                                                'rgba(0, 235, 0)'
+                                            ],
+                                                borderWidth: 1
+                                    }, {
+                                                type: 'line',
+                                                    label: 'Max',
+                                                        data: [{% for serum_data in serum_data %} 4.5, {% endfor %}, ],
+                                            borderColor: [
+                                                'rgba(235, 0, 0)'
+                                            ],
+                                                borderWidth: 1
+                                    }]
+                                },
+                                            options: {
+                                                responsive: false,
+                                                    scales: {
+                                                    y: {
+                                                        beginAtZero: true
+                                                    }
+                                                }
+                                            }
+                            });
+                                        </script>
+                                    </div>
+                                </div>
 
-  
- 
+                                <div id="Sodium" class="tabcontent">
+                                    <div>
+                                        <!-- Add visuals here -->
+                                        <canvas id="SodiumChart" width="500" height="500"></canvas>
+                                        <script>
+                                            const ctx2 = document.getElementById('SodiumChart').getContext('2d');
+                                            const SodiumChart = new Chart(ctx2, {
+                                                type: 'line',
+                                                data: {
+                                                    // x axis
+                                                    labels: [{% for serum_data in serum_data %} '{{serum_data.serum_entry_date}}', {% endfor %}],
+                                            datasets: [{
+                                                // y axis
+                                                label: 'Serum Stats',
+                                                data: [{% for serum_data in serum_data %} {{ serum_data.meql_sodium }}, {% endfor %}],
+                                                backgroundColor: [
+                                                    'rgba(173, 216, 230)'
+                                                ],
+                                                    borderColor: [
+                                                        'rgba(173, 216, 230)'
+                                                    ], 
+                                    }, {
+                                                type: 'line',
+                                                    label: 'Min',
+                                                        data: [{% for serum_data in serum_data %} 135, {% endfor %}, ],
+                                            borderColor: [
+                                                'rgba(0, 235, 0)'
+                                            ],
+                                                borderWidth: 1
+                                    }, {
+                                                type: 'line',
+                                                    label: 'Max',
+                                                        data: [{% for serum_data in serum_data %} 145, {% endfor %}, ],
+                                            borderColor: [
+                                                'rgba(235, 0, 0)'
+                                            ],
+                                                borderWidth: 1
+                                    }]
+                                },
+                                            options: {
+                                                responsive: false,
+                                                    scales: {
+                                                    y: {
+                                                        beginAtZero: true
+                                                    }
+                                                }
+                                            }
+                            });
+                                        </script>
+                                    </div>
+                                </div>
 
+                                <div id="Creatinine" class="tabcontent">
+                                    <div>
+                                        <!-- Add visuals here -->
+                                        <canvas id="CreatinineChart" width="500" height="500"></canvas>
+                                        <script>
+                                            const ctx3 = document.getElementById('CreatinineChart').getContext('2d');
+                                            const CreatinineChart = new Chart(ctx3, {
+                                                type: 'line',
+                                                data: {
+                                                    // x axis
+                                                    labels: [{% for serum_data in serum_data %} '{{serum_data.serum_entry_date}}', {% endfor %}],
+                                            datasets: [{
+                                                // y axis
+                                                label: 'Serum Stats',
+                                                data: [{% for serum_data in serum_data %} {{ serum_data.mgdl_creatinine }}, {% endfor %}],
+                                                backgroundColor: [
+                                                    'rgba(173, 216, 230)'
+                                                ],
+                                                    borderColor: [
+                                                        'rgba(173, 216, 230)'
+                                                    ], 
+                                    }, {
+                                                type: 'line',
+                                                    label: 'Female Min',
+                                                        data: [{% for serum_data in serum_data %} 1.1, {% endfor %}, ],
+                                            borderColor: [
+                                                'rgba(0, 235, 0)'
+                                            ],
+                                                borderWidth: 1
+                                    }, {
+                                                type: 'line',
+                                                    label: 'Male Min',
+                                                        data: [{% for serum_data in serum_data %} 1.3, {% endfor %}, ],
+                                            borderColor: [
+                                                'rgba(235, 0, 0)'
+                                            ],
+                                                borderWidth: 1
+                                    }]
+                                },
+                                            options: {
+                                                responsive: false,
+                                                    scales: {
+                                                    y: {
+                                                        beginAtZero: true
+                                                    }
+                                                }
+                                            }
+                            });
+                                        </script>
+                                    </div>
+                                </div>
+
+                                <div id="Albumin" class="tabcontent">
+                                    <div>
+                                        <!-- Add visuals here -->
+                                        <canvas id="AlbuminChart" width="500" height="500"></canvas>
+                                        <script>
+                                            const ctx4 = document.getElementById('AlbuminChart').getContext('2d');
+                                            const AlbuminChart = new Chart(ctx4, {
+                                                type: 'line',
+                                                data: {
+                                                    // x axis
+                                                    labels: [{% for serum_data in serum_data %} '{{serum_data.serum_entry_date}}', {% endfor %}],
+                                            datasets: [{
+                                                // y axis
+                                                label: 'Serum Stats',
+                                                data: [{% for serum_data in serum_data %} {{ serum_data.mgdl_albumin }}, {% endfor %}],
+                                                backgroundColor: [
+                                                    'rgba(173, 216, 230)'
+                                                ],
+                                                    borderColor: [
+                                                        'rgba(173, 216, 230)'
+                                                    ], 
+                                    }, {
+                                                type: 'line',
+                                                    label: 'Min',
+                                                        data: [{% for serum_data in serum_data %} 3.5, {% endfor %}, ],
+                                            borderColor: [
+                                                'rgba(0, 235, 0)'
+                                            ],
+                                                borderWidth: 1
+                                    }]
+                                },
+                                            options: {
+                                                responsive: false,
+                                                    scales: {
+                                                    y: {
+                                                        beginAtZero: true
+                                                    }
+                                                }
+                                            }
+                            });
+                                        </script>
+                                    </div>
+                                </div>
+
+                                <div id="Blood Sugar" class="tabcontent">
+                                    <div>
+                                        <!-- Add visuals here -->
+                                        <canvas id="BSChart" width="500" height="500"></canvas>
+                                        <script>
+                                            const ctx5 = document.getElementById('BSChart').getContext('2d');
+                                            const BSChart = new Chart(ctx5, {
+                                                type: 'line',
+                                                data: {
+                                                    // x axis
+                                                    labels: [{% for serum_data in serum_data %} '{{serum_data.serum_entry_date}}', {% endfor %}],
+                                            datasets: [{
+                                                // y axis
+                                                label: 'Serum Stats',
+                                                data: [{% for serum_data in serum_data %} {{ serum_data.mgdl_blood_sugar }}, {% endfor %}],
+                                                backgroundColor: [
+                                                    'rgba(173, 216, 230)'
+                                                ],
+                                                    borderColor: [
+                                                        'rgba(173, 216, 230)'
+                                                    ], 
+                                    }, {
+                                                type: 'line',
+                                                    label: 'Min',
+                                                        data: [{% for serum_data in serum_data %} 70, {% endfor %}, ],
+                                            borderColor: [
+                                                'rgba(0, 235, 0)'
+                                            ],
+                                                borderWidth: 1
+                                    }, {
+                                                type: 'line',
+                                                    label: 'Max',
+                                                        data: [{% for serum_data in serum_data %} 100, {% endfor %}, ],
+                                            borderColor: [
+                                                'rgba(235, 0, 0)'
+                                            ],
+                                                borderWidth: 1
+                                    }]
+                                },
+                                            options: {
+                                                responsive: false,
+                                                    scales: {
+                                                    y: {
+                                                        beginAtZero: true
+                                                    }
+                                                }
+                                            }
+                            });
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- According Info-->
+
+                        </div>
+                        <br>
+                        <div class=" serums">
+                            <a href="{%url 'viewSerums'%}"><button class="btn btn-primary btn-block">View All Serum
+                                    Entries</button></a>
+                        </div>
+</details>
 
 
 
 <script>
     var acc = document.getElementsByClassName("accordion");
     var i;
-    
+
     for (i = 0; i < acc.length; i++) {
-      acc[i].addEventListener("click", function() {
-        this.classList.toggle("active");
-        var panel = this.nextElementSibling;
-        if (panel.style.display === "block") {
-          panel.style.display = "none";
-        } else {
-          panel.style.display = "block";
-        }
-      });
+        acc[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+            }
+        });
     }
 </script>
 {%endblock%}

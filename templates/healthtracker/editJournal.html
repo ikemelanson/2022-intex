@@ -1,0 +1,23 @@
+{%extends 'base.html'%}
+{%load static%}
+{%block content%}
+
+<div>
+    <div class="foody shadow">
+        <h2 class="food">Edit Journal Entry</h2>
+        <form method="POST" class="form-group" action="{% url 'commitJournal' %}" name="journalForm">
+            {%csrf_token%}
+
+            <label for="journal.journal_date">Journal Entry Date</label>
+            <input  class="form-control" type="Date" name="journal_date" value="{{journal.journal_date}}">
+            <br>
+            <label for="journal_time">Journal Entry Time</label>
+            <input  class="form-control" type="time" name="journal_time" value="{{journal.journal_time}}">
+            <br>
+            
+            <input type="number" name="journal_id" id="journal_id" value="{{journal.journal_id}}" hidden>
+            <button type="submit">Update</button>
+        </form>
+    </div>
+</div>
+{%endblock%}
