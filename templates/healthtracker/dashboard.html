@@ -164,14 +164,14 @@
     <a href="{% url 'viewPeople'%}"><button type="button btn" class="btn btn-primary btn-block">Edit Personal Information</button></a>
     </div>
 </details>
-<details class="container">
+<details class="container" open>
     <summary class="summary btn btn-primary btn-lg btn-block">Journal Entry</summary>
     <div class="content">
         <div class="border journalentry">
             <h4>New Food Journal Entry</h4>
             <hr>
-            <button class="accordion">Step 1: <b>Add Meal</b></button>
-            <div class="panel">
+            <button class="accordion" active>Step 1: <b>Add Meal</b></button>
+            <div class="panel" style="display:block;">
                 <form method="POST">
                     <!--action="{% url 'submitmeal' %}" name="personForm">-->
                     {% csrf_token %}
