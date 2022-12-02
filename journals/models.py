@@ -4,6 +4,7 @@ from django.db import models
 # Create your models here.
 
 class Person(models.Model) :
+    person_id = models.AutoField(primary_key=True)
     first_name = models.CharField(max_length= 20)
     last_name = models.CharField(max_length= 20)
     age = models.IntegerField(default = 0)
@@ -17,12 +18,14 @@ class Person(models.Model) :
         return (self.first_name)
 
 class Meal(models.Model):
+    meal_id = models.AutoField(primary_key=True)
     description = models.CharField(max_length=20)
 
     def __str__(self):
         return (self.description)
 
 class Journal_Entry(models.Model) :
+    journal_id = models.AutoField(primary_key=True)
     person_id = models.ForeignKey(Person, on_delete=models.CASCADE)
     journal_date = models.DateField(default=datetime.today)
     journal_time = models.TimeField(default=datetime.today)
@@ -37,6 +40,7 @@ class Journal_Entry(models.Model) :
 
 
 class Food(models.Model):
+    food_id = models.AutoField(primary_key=True)
     food_name = models.CharField(max_length=30)
     g_protein = models.DecimalField(max_digits=5, decimal_places=1, default=0)
     mg_phosphorus = models.DecimalField(max_digits=5, decimal_places=1, default=0)

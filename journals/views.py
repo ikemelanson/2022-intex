@@ -104,6 +104,20 @@ def submituser(request):
         person.username = request.POST['username']
 
         person.save()
+        return redirect('dashboard')
+    return dashboardPageView(request)
+
+def submitmeal(request):
+    if request.method == "POST":
+        journalentry = Journal_Entry()
+        
+
+        journalentry.person_id = request.POST['person_id']
+        journalentry.journal_date = request.POST['journal_date']
+        journalentry.journal_time = request.POST['journal_time']
+        journalentry.meal_id = request.POST['meal_id']
+
+        journalentry.save()
 
         return dashboardPageView(request, request.POST['username'])
 
