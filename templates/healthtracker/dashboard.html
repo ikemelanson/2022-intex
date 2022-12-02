@@ -1,4 +1,5 @@
 {%extends 'base.html'%}
+{% load mathfilters %}
 {% load crispy_forms_tags %}
 {%load static%}
 {%block content%}
@@ -173,7 +174,7 @@
                     </form>
                 </div>
                 <br>
-                <button class = "accordion">Step 2: <b>Add Food</b></button>
+                <button class = "accordion">Step 2: <b>Add Food Amount</b></button>
                 <div class="panel">
                     <form method="POST">
                         {% csrf_token %}
@@ -184,10 +185,75 @@
                     <br>
                         <a href="{% url 'newFood'%}"><button type="button" class="btn btn-primary btn-block">Search New Food</button></a>
                 </div>
+                <br>
             </div>
             <div class="journalGraph">
                 <div class="graphs">
-                    Hello
+                    {% for entry in data %}
+                        <button class = "accordion">{{entry.meal_id }}, {{entry.journal_date}}</button>
+                        <div class="panel">
+                        {% for food in food_journal_data %}
+                            {% if food.journal_id_id == entry.journal_id %}
+                                {{food.food_id}}: {{food.servings}} servings <br>&nbsp&nbsp&nbsp
+                                {% for nutrient in food_data %}
+                                    {% if nutrient.food_id == food.food_id_id%}
+                                        Protein: {{ nutrient.g_protein }}g|
+                                        Phos: {{ nutrient.mg_phosphorus }}mg |
+                                        K: {{ nutrient.mg_potassium }}mg |
+                                        Sodium: {{ nutrient.mg_sodium }}mg
+                                    {% endif %}
+                                {% endfor %}<br>
+                            {% endif %}
+                        {% endfor %} <br>
+                        TOTAL NUTRIENTS: {{food.servings}}<br>
+                        {% with 0 as totProt %}
+                        {% with 0 as totPhos %}
+                        {% with 0 as totPotas %}
+                        {% with 0 as totSod %}
+                        {% for food in food_journal_data %}
+                            {% if food.journal_id_id == entry.journal_id %}
+                                {% for nutrient in food_data %}
+                                    {% if nutrient.food_id == food.food_id_id%}
+                                        {% with food.servings|mul:nutrient.g_protein as protein %}
+                                        {% with protein|addition:totProt as totPro %}
+
+                                        {% with food.servings|mul:nutrient.mg_phosphorus as phos %}
+                                        {% with phos|addition:totPhos as totPhos %}
+
+                                        {% with food.servings|mul:nutrient.mg_potassium as potas %}
+                                        {% with potas|addition:totPotas as totPotas %}
+
+                                        {% with food.servings|mul:nutrient.mg_sodium as sod %}
+                                        {% with sod|addition:totSod as totSod %}
+                                        {% comment %} {{ food.servings|mul:nutrient.g_protein|addition:totProt }} {% endcomment %}
+                                        {% comment %} {{ food.servings|mul:nutrient.mg_phosphorus}}
+                                        {{ food.servings|mul:nutrient.mg_potassium}}
+                                        {{ food.servings|mul:nutrient.mg_sodium}} {% endcomment %}
+                                        {{food.food_id}}:<br>&nbsp&nbsp&nbsp
+                                        Protein: {{ totPro }}
+                                        Phosphorous: {{ totPhos }}
+                                        Potassium: {{ totPotas }}
+                                        Sodium: {{ totSod }}
+                                        {% endwith %}
+                                        {% endwith %}
+                                        {% endwith %}
+                                        {% endwith %}
+                                        {% endwith %}
+                                        {% endwith %}
+                                        {% endwith %}
+                                        {% endwith %}
+                                    {% endif %}
+                                {% endfor %}<br>
+                            {% endif %}
+                        {% endfor %} <br>
+                        {% endwith %}
+                        {% endwith %}
+                        {% endwith %}
+                        {% endwith %}
+
+
+                        </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>

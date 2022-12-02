@@ -30,4 +30,4 @@ class Food_Journal_Form(forms.ModelForm) :
 class Food_Form(forms.ModelForm) :
     class Meta :
         model = Food
-        fields = '__all__'
+        fields = ['food_name', 'g_protein', 'mg_phosphorus', 'mg_potassium', 'mg_sodium']

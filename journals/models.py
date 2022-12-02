@@ -32,11 +32,11 @@ class Journal_Entry(models.Model) :
     meal_id = models.ForeignKey(Meal, on_delete=models.DO_NOTHING)
 
     def __str__(self):
-        return (self.full_date_time)
+        return (self.full_meal_date)
 
     @property
-    def full_date_time(self):
-        return '%s %s' % (self.journal_date, self.journal_time)
+    def full_meal_date(self):
+        return '%s %s' % (self.meal_id, self.journal_date)
 
 
 class Food(models.Model):
