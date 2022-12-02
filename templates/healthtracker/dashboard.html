@@ -140,7 +140,10 @@
             </div>
             </form>
           </div>
-          <a href="{% url 'viewPeople'%}"><button type="button" class="btn btn-primary">Edit Personal Information</button></a>
+          <br>
+          <div class="foody">
+          <a href="{% url 'viewPeople'%}"><button type="button" class="btn btn-primary btn-block">Edit Personal Information</button></a>
+          </div>
     </details>
     <details class="container">
         <summary class="summary btn btn-primary btn-lg btn-block">Journal Entry</summary>
@@ -191,7 +194,7 @@
                 <div class="graphs">
                     {% for entry in data %}
                         <button class = "accordion">{{entry.meal_id }}, {{entry.journal_date}}</button>
-                        <div class="panel">
+                        <div class="panel ">
                         {% for food in food_journal_data %}
                             {% if food.journal_id_id == entry.journal_id %}
                                 {{food.food_id}}: {{food.servings}} servings <br>&nbsp&nbsp&nbsp
@@ -624,11 +627,10 @@
         <!-- According Info-->
 
     </div>
-    <div class="container">
-        <a href="{%url 'viewSerums'%}"><button class="btn btn-primary">View All Serum Entries</button></a>
-    </div>
-  </details>
 <br>
+        <a href="{%url 'viewSerums'%}"><button class="btn btn-primary  serums">View All Serum Entries</button></a>
+  </details>
+
 
   
  
