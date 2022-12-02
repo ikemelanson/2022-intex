@@ -4,18 +4,18 @@
 
 <div>
     {%for person in people_data%}
-    <div>
-        {{person.first_name}}
-        {{person.last_name}}
+    <div class="foody shadow">
+        <h2 class="food">Profile</h2>
+        <h3>{{person.first_name}}{{person.last_name}}</h3>
         <form method="POST" class="form-group" action="{% url 'editPerson' %}" name="editSerum">
             {%csrf_token%}
             <input type="number" name="person_id" id="person_id" value="{{person.person_id}}" hidden>
-            <button type="submit">Edit</button>
+            <button type="submit" class="btn btn-primary">Edit</button>
         </form>
         <form method="POST" class="form-group" action="{% url 'delPerson' %}" name="delPerson">
             {%csrf_token%}
             <input type="number" name="person_id" id="person_id" value="{{person.person_id}}" hidden>
-            <button type="submit">Delete</button>
+            <button type="submit" class="btn btn-primary">Delete</button>
         </form>
     </div>
     {%endfor%}

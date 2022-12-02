@@ -1,9 +1,10 @@
 {%extends 'base.html'%}
 {%load static%}
 {%block content%}
-edit person
+
 <div>
-    <div>
+    <div class="foody shadow">
+        <h2 class="food">Edit Person</h2>
         <form method="POST" class="form-group" action="{% url 'commitPerson' %}" name="personForm">
             {%csrf_token%}
 
