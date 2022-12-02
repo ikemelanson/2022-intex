@@ -103,7 +103,7 @@
             <h4>Add Personal Information</h4>
             <hr>
             <form method="POST" action="{% url 'submituser' %}" name="personForm">
-                <div class="form-group">
+            <div class="form-group">
                 {% csrf_token %}
                 <label for="first_name">First Name:</label><br>
                 <input type="text" name="first_name" id="first_name" maxlength="30" class="form-control"><br>
@@ -139,6 +139,7 @@
             </div>
             </form>
           </div>
+          <a href="{% url 'viewPeople'%}"><button type="button" class="btn btn-primary">View People</button></a>
     </details>
     <details class="container">
         <summary class="summary btn btn-primary btn-lg btn-block">Journal Entry</summary>

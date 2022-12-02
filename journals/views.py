@@ -216,12 +216,35 @@ def commitSerum(request):
 
         return redirect("viewSerums")
 
+def commitPerson(request):
+    if request.method == "POST":
+
+        person = Person.objects.get(person_id = request.POST['person_id'])
+
+        person.first_name = request.POST['first_name']
+        person.last_name = request.POST['last_name']
+        person.age = request.POST['age']
+        person.height = request.POST['height']
+        person.condition = request.POST['condition']
+        person.gender = request.POST['gender']
+
+        person.save()
+
+        return redirect("viewPeople")
+
 def delSerum(request):
 
     serum = Serum_Entry.objects.get(id = request.POST['serum_id'])
     serum.delete()
 
     return redirect("viewSerums")
+
+def delPerson(request):
+
+    person = Person.objects.get(person_id = request.POST['person_id'])
+    person.delete()
+
+    return redirect("viewPeople")
 
 def viewSerums(request):
 
@@ -232,6 +255,17 @@ def viewSerums(request):
     }
 
     return render(request, "healthtracker/viewSerums.html", context)
+
+
+def viewPeople(request):
+
+    people_data = Person.objects.all()
+
+    context = {
+        "people_data" : people_data
+    }
+
+    return render(request, "healthtracker/viewPeople.html", context)
 
 
 def editSerum(request):
@@ -245,6 +279,15 @@ def editSerum(request):
     }
 
     return render(request, "healthtracker/editSerum.html", context)
+
+def editPerson(request):
+    person = Person.objects.get(person_id = request.POST['person_id'])
+
+    context = {
+        'person' : person
+    }
+
+    return render(request, "healthtracker/editPerson.html", context)
 
 
 # def dashboardUsernamePageView(request,username):
