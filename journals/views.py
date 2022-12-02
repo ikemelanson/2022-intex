@@ -63,9 +63,9 @@ def dashboardPageView(request, username) :
             serum_form.save()
             return redirect('dashboard')
 
-        # if Food_journal_form.is_valid() :
-        #     Food_journal_form.save()
-        #     return redirect('dashboard')
+        if Food_journal_form.is_valid() :
+            Food_journal_form.save()
+            return redirect('dashboard')
     else :
         Dashboard_form = Journal_Entry_Form()
         serum_form = Serum_Entry_Form()

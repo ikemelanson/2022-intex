@@ -176,7 +176,7 @@
                 <div class="panel">
                     <form method="POST">
                         {% csrf_token %}
-                        <!--{{ Food_journal_form|crispy }}-->
+                        {{ Food_journal_form|crispy }}
                     </br>
                         <input class = 'btn btn-primary btn-block' type='submit' value = 'Add'>
                     </form>
