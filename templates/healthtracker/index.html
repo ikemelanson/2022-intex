@@ -12,7 +12,7 @@
                 </div>
                 {%if user.is_authenticated%}
                 <div class="buttons d-grid gap-1 col-6 mx-auto">
-                  <a href="{%url 'dashboard'  username=user.username%}" class="btn btn-primary btn-lg"> View Dashboard </a>  
+                  <a href="{%url 'dashboard'  %}" class="btn btn-primary btn-lg"> View Dashboard </a>  
                   {% comment %} <a href="#" class="btn btn-outline-secondary m5-3"> Live previews </a>   {% endcomment %}
                 </div>
                 {%else%}
@@ -116,7 +116,7 @@
     </div>
     {%if user.is_authenticated%}
     <div class="buttons d-grid gap-1 col-6 mx-auto">
-        <a href="{%url 'dashboard' username=user.username%}" class="btn btn-primary btn-lg"> View dashboard</a>  
+        <a href="{%url 'dashboard' %}" class="btn btn-primary btn-lg"> View dashboard</a>  
         {% comment %} <a href="#" class="btn btn-outline-secondary m5-3"> Live previews </a>   {% endcomment %}
       </div>
     {%else%}

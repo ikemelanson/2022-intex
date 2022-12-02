@@ -41,7 +41,7 @@ def accountRegisterView(request):
     return render(request, 'healthtracker/accountregister.html', context) 
 
 
-def dashboardPageView(request, username) :
+def dashboardPageView(request) :
     person_data = Person.objects.all()
     data = Journal_Entry.objects.all()
     serum_data = Serum_Entry.objects.all()
@@ -71,6 +71,7 @@ def dashboardPageView(request, username) :
         Person_form = PersonForm()
         Food_journal_form = Food_Journal_Form()
 
+
     context = {
         'person_form': Person_form,
         'person_data': person_data,
@@ -80,7 +81,6 @@ def dashboardPageView(request, username) :
         'Dashboard_form': Dashboard_form,
         'food_journal_data': food_journal_data,
         'Food_journal_form': Food_journal_form,
-        'username' : username,
         'meal_data': meal_data,
     }
 
@@ -100,11 +100,10 @@ def submituser(request):
         person.weight = request.POST['weight']
         person.height = request.POST['height']
         person.condition = request.POST['condition']
-        person.username = request.POST['username']
+        # person.username = request.POST['username']
 
         person.save()
         return redirect('dashboard')
-    return dashboardPageView(request)
 
 def submitmeal(request):
     if request.method == "POST":

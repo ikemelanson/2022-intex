@@ -132,7 +132,7 @@
                     <option value="4">4</option>
                 </select><br><br>
             </div>
-                <input type="text" name="username" value="{{user.username}}" hidden>
+                {% comment %} <input type="text" name="username" value="{{user.username}}" hidden> {% endcomment %}
 
                 <button type="submit" class="btn btn-primary btn-block">Submit</button>
             </div>
@@ -168,7 +168,6 @@
                         </select><br><br> {% endcomment %}
                     </br>
                         <input class = 'btn btn-primary btn-block' type='submit' value = 'Add'>
-                </div>
                     </form>
                 </div>
                 <br>
@@ -227,30 +226,27 @@
                                         label: 'Serum Stats',
                                         data: [{% for serum_data in serum_data %} {{serum_data.mgdl_potassium}}, {% endfor %},],
                                         backgroundColor: [
-                                            'rgba(255, 99, 132, 0.2)',
-                                            'rgba(54, 162, 235, 0.2)',
-                                            'rgba(255, 206, 86, 0.2)',
-                                            'rgba(75, 192, 192, 0.2)',
-                                            'rgba(153, 102, 255, 0.2)',
-                                            'rgba(255, 159, 64, 0.2)'
+                                            'rgba(173, 216, 230)'
                                         ],
                                         borderColor: [
-                                            'rgba(255, 99, 132, 1)',
-                                            'rgba(54, 162, 235, 1)',
-                                            'rgba(255, 206, 86, 1)',
-                                            'rgba(75, 192, 192, 1)',
-                                            'rgba(153, 102, 255, 1)',
-                                            'rgba(255, 159, 64, 1)'
-                                        ],
-                                        borderWidth: 1 
+                                            'rgba(173, 216, 230)'
+                                        ], 
                                     }, {
                                         type: 'line',
                                         label: 'Min',
                                         data: [{% for serum_data in serum_data %} 3.6, {% endfor %}, ],
+                                        borderColor: [
+                                        'rgba(0, 235, 0)'
+                                        ],
+                                        borderWidth: 1
                                     }, {
                                         type: 'line',
                                         label: 'Max',
                                         data: [{% for serum_data in serum_data %} 5.2, {% endfor %}, ],
+                                        borderColor: [
+                                            'rgba(235, 0, 0)'
+                                        ],
+                                        borderWidth: 1
                                     }]
                                 },
                                 options: {
@@ -282,30 +278,27 @@
                                         label: 'Serum Stats',
                                         data: [{% for serum_data in serum_data %} {{serum_data.mgdl_phosphorus}}, {% endfor %}],
                                         backgroundColor: [
-                                            'rgba(255, 99, 132, 0.2)',
-                                            'rgba(54, 162, 235, 0.2)',
-                                            'rgba(255, 206, 86, 0.2)',
-                                            'rgba(75, 192, 192, 0.2)',
-                                            'rgba(153, 102, 255, 0.2)',
-                                            'rgba(255, 159, 64, 0.2)'
+                                            'rgba(173, 216, 230)'
                                         ],
                                         borderColor: [
-                                            'rgba(255, 99, 132, 1)',
-                                            'rgba(54, 162, 235, 1)',
-                                            'rgba(255, 206, 86, 1)',
-                                            'rgba(75, 192, 192, 1)',
-                                            'rgba(153, 102, 255, 1)',
-                                            'rgba(255, 159, 64, 1)'
-                                        ],
-                                        borderWidth: 1 
+                                            'rgba(173, 216, 230)'
+                                        ], 
                                     }, {
                                         type: 'line',
                                         label: 'Min',
                                         data: [{% for serum_data in serum_data %} 2.8, {% endfor %}, ],
+                                        borderColor: [
+                                        'rgba(0, 235, 0)'
+                                        ],
+                                        borderWidth: 1
                                     }, {
                                         type: 'line',
                                         label: 'Max',
                                         data: [{% for serum_data in serum_data %} 4.5, {% endfor %}, ],
+                                        borderColor: [
+                                            'rgba(235, 0, 0)'
+                                        ],
+                                        borderWidth: 1
                                     }]
                                 },
                                 options: {
@@ -337,30 +330,27 @@
                                         label: 'Serum Stats',
                                         data: [{% for serum_data in serum_data %} {{serum_data.meql_sodium}}, {% endfor %}],
                                         backgroundColor: [
-                                            'rgba(255, 99, 132, 0.2)',
-                                            'rgba(54, 162, 235, 0.2)',
-                                            'rgba(255, 206, 86, 0.2)',
-                                            'rgba(75, 192, 192, 0.2)',
-                                            'rgba(153, 102, 255, 0.2)',
-                                            'rgba(255, 159, 64, 0.2)'
+                                            'rgba(173, 216, 230)'
                                         ],
                                         borderColor: [
-                                            'rgba(255, 99, 132, 1)',
-                                            'rgba(54, 162, 235, 1)',
-                                            'rgba(255, 206, 86, 1)',
-                                            'rgba(75, 192, 192, 1)',
-                                            'rgba(153, 102, 255, 1)',
-                                            'rgba(255, 159, 64, 1)'
-                                        ],
-                                        borderWidth: 1 
+                                            'rgba(173, 216, 230)'
+                                        ], 
                                     }, {
                                         type: 'line',
                                         label: 'Min',
                                         data: [{% for serum_data in serum_data %} 135, {% endfor %}, ],
+                                        borderColor: [
+                                        'rgba(0, 235, 0)'
+                                        ],
+                                        borderWidth: 1
                                     }, {
                                         type: 'line',
                                         label: 'Max',
                                         data: [{% for serum_data in serum_data %} 145, {% endfor %}, ],
+                                        borderColor: [
+                                            'rgba(235, 0, 0)'
+                                        ],
+                                        borderWidth: 1
                                     }]
                                 },
                                 options: {
@@ -392,26 +382,27 @@
                                         label: 'Serum Stats',
                                         data: [{% for serum_data in serum_data %} {{serum_data.mgdl_creatinine}}, {% endfor %}],
                                         backgroundColor: [
-                                            'rgba(255, 99, 132, 0.2)',
-                                            'rgba(54, 162, 235, 0.2)',
-                                            'rgba(255, 206, 86, 0.2)',
-                                            'rgba(75, 192, 192, 0.2)',
-                                            'rgba(153, 102, 255, 0.2)',
-                                            'rgba(255, 159, 64, 0.2)'
+                                            'rgba(173, 216, 230)'
                                         ],
                                         borderColor: [
-                                            'rgba(255, 99, 132, 1)',
-                                            'rgba(54, 162, 235, 1)',
-                                            'rgba(255, 206, 86, 1)',
-                                            'rgba(75, 192, 192, 1)',
-                                            'rgba(153, 102, 255, 1)',
-                                            'rgba(255, 159, 64, 1)'
-                                        ],
-                                        borderWidth: 1 
+                                            'rgba(173, 216, 230)'
+                                        ], 
                                     }, {
                                         type: 'line',
-                                        label: 'Line Dataset',
+                                        label: 'Female Min',
                                         data: [{% for serum_data in serum_data %} 1.1, {% endfor %}, ],
+                                        borderColor: [
+                                        'rgba(0, 235, 0)'
+                                        ],
+                                        borderWidth: 1
+                                    }, {
+                                        type: 'line',
+                                        label: 'Male Min',
+                                        data: [{% for serum_data in serum_data %} 1.3, {% endfor %}, ],
+                                        borderColor: [
+                                        'rgba(235, 0, 0)'
+                                        ],
+                                        borderWidth: 1
                                     }]
                                 },
                                 options: {
@@ -443,26 +434,19 @@
                                         label: 'Serum Stats',
                                         data: [{% for serum_data in serum_data %} {{serum_data.mgdl_albumin}}, {% endfor %}],
                                         backgroundColor: [
-                                            'rgba(255, 99, 132, 0.2)',
-                                            'rgba(54, 162, 235, 0.2)',
-                                            'rgba(255, 206, 86, 0.2)',
-                                            'rgba(75, 192, 192, 0.2)',
-                                            'rgba(153, 102, 255, 0.2)',
-                                            'rgba(255, 159, 64, 0.2)'
+                                            'rgba(173, 216, 230)'
                                         ],
                                         borderColor: [
-                                            'rgba(255, 99, 132, 1)',
-                                            'rgba(54, 162, 235, 1)',
-                                            'rgba(255, 206, 86, 1)',
-                                            'rgba(75, 192, 192, 1)',
-                                            'rgba(153, 102, 255, 1)',
-                                            'rgba(255, 159, 64, 1)'
-                                        ],
-                                        borderWidth: 1 
+                                            'rgba(173, 216, 230)'
+                                        ], 
                                     }, {
                                         type: 'line',
                                         label: 'Min',
                                         data: [{% for serum_data in serum_data %} 3.5, {% endfor %}, ],
+                                        borderColor: [
+                                        'rgba(0, 235, 0)'
+                                        ],
+                                        borderWidth: 1
                                     }]
                                 },
                                 options: {
@@ -494,30 +478,27 @@
                                         label: 'Serum Stats',
                                         data: [{% for serum_data in serum_data %} {{serum_data.mgdl_blood_sugar}}, {% endfor %}],
                                         backgroundColor: [
-                                            'rgba(255, 99, 132, 0.2)',
-                                            'rgba(54, 162, 235, 0.2)',
-                                            'rgba(255, 206, 86, 0.2)',
-                                            'rgba(75, 192, 192, 0.2)',
-                                            'rgba(153, 102, 255, 0.2)',
-                                            'rgba(255, 159, 64, 0.2)'
+                                            'rgba(173, 216, 230)'
                                         ],
                                         borderColor: [
-                                            'rgba(255, 99, 132, 1)',
-                                            'rgba(54, 162, 235, 1)',
-                                            'rgba(255, 206, 86, 1)',
-                                            'rgba(75, 192, 192, 1)',
-                                            'rgba(153, 102, 255, 1)',
-                                            'rgba(255, 159, 64, 1)'
-                                        ],
-                                        borderWidth: 1 
+                                            'rgba(173, 216, 230)'
+                                        ], 
                                     }, {
                                         type: 'line',
                                         label: 'Min',
                                         data: [{% for serum_data in serum_data %} 70, {% endfor %}, ],
+                                        borderColor: [
+                                        'rgba(0, 235, 0)'
+                                        ],
+                                        borderWidth: 1
                                     }, {
                                         type: 'line',
                                         label: 'Max',
                                         data: [{% for serum_data in serum_data %} 100, {% endfor %}, ],
+                                        borderColor: [
+                                            'rgba(235, 0, 0)'
+                                        ],
+                                        borderWidth: 1
                                     }]
                                 },
                                 options: {
