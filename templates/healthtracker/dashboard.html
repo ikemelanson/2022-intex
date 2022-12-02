@@ -160,7 +160,9 @@
     </div>
     </form>
     </div>
-    <a href="{% url 'viewPeople'%}"><button type="button" class="btn btn-primary">Edit Personal Information</button></a>
+    <div class="foody">
+    <a href="{% url 'viewPeople'%}"><button type="button btn" class="btn btn-primary btn-block">Edit Personal Information</button></a>
+    </div>
 </details>
 <details class="container">
     <summary class="summary btn btn-primary btn-lg btn-block">Journal Entry</summary>
@@ -194,36 +196,6 @@
                     <input class='btn btn-primary btn-block' type='submit' value='Add'>
                 </form>
             </div>
-            <div class="journalGraph">
-                <div class="graphs">
-                    {% for entry in data %}
-                        <button class = "accordion">{{entry.meal_id }}, {{entry.journal_date}}</button>
-                        <div class="panel ">
-                        {% for food in food_journal_data %}
-                            {% if food.journal_id_id == entry.journal_id %}
-                                {{food.food_id}}: {{food.servings}} servings <br>&nbsp&nbsp&nbsp
-                                {% for nutrient in food_data %}
-                                    {% if nutrient.food_id == food.food_id_id%}
-                                        Protein: {{ nutrient.g_protein }}g|
-                                        Phos: {{ nutrient.mg_phosphorus }}mg |
-                                        K: {{ nutrient.mg_potassium }}mg |
-                                        Sodium: {{ nutrient.mg_sodium }}mg
-                                    {% endif %}
-                                {% endfor %}<br>
-                            {% endif %}
-                        {% endfor %} <br>
-                        TOTAL NUTRIENTS: {{food.servings}}<br>
-                        {% with 0 as totProt %}
-                        {% with 0 as totPhos %}
-                        {% with 0 as totPotas %}
-                        {% with 0 as totSod %}
-                        {% for food in food_journal_data %}
-                            {% if food.journal_id_id == entry.journal_id %}
-                                {% for nutrient in food_data %}
-                                    {% if nutrient.food_id == food.food_id_id%}
-                                        {% with food.servings|mul:nutrient.g_protein as protein %}
-                                        {% with protein|addition:totProt as totPro %}
-            <br>
             <button class="accordion">Step 2: <b>Add Food Amount</b></button>
             <div class="panel">
                 <form method="POST">
@@ -378,8 +350,6 @@
                                 <button class="tablinks" onclick="openCity(event, 'Creatinine')">Creatinine</button>
                                 <button class="tablinks" onclick="openCity(event, 'Albumin')">Albumin</button>
                                 <button class="tablinks" onclick="openCity(event, 'Blood Sugar')">Blood Sugar</button>
-
-    </div>
                                 <div id="Potassium" class="tabcontent">
                                     <div>
                                         <!-- Add visuals here -->
@@ -688,19 +658,12 @@
                             <!-- According Info-->
 
                         </div>
-                        <div class="container">
-                            <a href="{%url 'viewSerums'%}"><button class="btn btn-primary">View All Serum
+                        <br>
+                        <div class=" serums">
+                            <a href="{%url 'viewSerums'%}"><button class="btn btn-primary btn-block">View All Serum
                                     Entries</button></a>
                         </div>
 </details>
-<br>
-        <a href="{%url 'viewSerums'%}"><button class="btn btn-primary  serums">View All Serum Entries</button></a>
-  </details>
-
-
-
-
-
 
 
 
