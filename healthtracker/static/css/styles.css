@@ -8,7 +8,18 @@
     --gray-2:#d3d4db;
     --white: #FFFFFF;
 }
-
+.foody {
+    padding: 30px;
+    border-radius: 10px;
+    width: 50%;
+    margin: auto;
+}
+.food {
+    text-align: center;
+}
+.food-search {
+    border-radius: 20px !important;
+}
 .tab {
     width: 90vh;
 }

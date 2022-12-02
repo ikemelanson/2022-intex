@@ -10,12 +10,13 @@
 <div class="alert">We try to match your search as close as possible. If the information below is incorrect, you can add the food below or <a class="alert-link" href="{% url 'newFood'%}">search again</a></div>
 {%endif%}
 
-<a class="alert-link" href="{% url 'newFood'%}">Back</a>
-<div class="container">
+
+<div class=" foody shadow">
     <form class="form-group" method="POST" action="{% url 'commitFood' %}" name="searchForm">
         {%csrf_token%}
+        <h3 class="food"> Results </h3>
         <label for="food_name">Food Name</label>
-        <input class="form-control" type="text" name="food_name" id="food_name" value="{{name}}">
+        <input class="form-control" type="text" name="food_name" id="food_name" value="{{name}}" maxlength="30">
     
         <label for="gProtein">Protein (g)</label>
         <input class="form-control" type="text" name="g_protein" id="gProtein" value="{{nutrients.n}}">
@@ -28,9 +29,12 @@
     
         <label for="mg_sodium">Sodium (mg)</label>
         <input class="form-control" type="text" name="mg_sodium" id="mg_sodium" value="{{nutrients.a}}">
-    
+        <br>
         <button type="submit" class="btn btn-primary btn-block">Add Food</button>
     </form>
  </div>  
-
+ <br>
+ <div class="container">
+    <a class="alert-link" href="{% url 'newFood'%}"><button class="btn btn-primary">Back</button></a>
+</div>
 {%endblock%}

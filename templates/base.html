@@ -111,21 +111,31 @@
                 </small>
               </div>
             </div>
+            {%if user.is_authenticated%}
             <div class="col-md-3">
               <div>
                 <small>
-                  <a href="#" class="text-decoration-none"> Dashboard </a>
+                  <a href="{%url 'dashboard'%}" class="text-decoration-none"> Dashboard </a>
                 </small>
               </div>
             </div>
             <div class="col-md-3">
               <div>
                 <small>
-                  <a href="#" class="text-decoration-none"  href="{% url 'index' %}"> Home </a>
+                  <a class="text-decoration-none"  href="{% url 'logout' %}"> Logout</a>
                 </small>
               </div>
-            </div>
+            </div>  
           </div>
+          {%else %}
+          <div class="col-md-3">
+            <div>
+              <small>
+                <a class="text-decoration-none"  href="{% url 'account' %}"> Register</a>
+              </small>
+            </div>
+          </div>  
+          {%endif%}
         </div>
         <div class="copy">
           &copy; Intex

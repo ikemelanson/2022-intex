@@ -106,31 +106,32 @@
                 <div class="form-group">
                 {% csrf_token %}
                 <label for="first_name">First Name:</label><br>
-                <input type="text" name="first_name" id="first_name" maxlength="30"><br><br>
+                <input type="text" name="first_name" id="first_name" maxlength="30" class="form-control"><br>
 
-                <label for="last_name">Last Name:</label><br>
-                <input type="text" name="last_name" id="last_name" maxlength="30"><br><br>
+                <label for="last_name">Last Name:</label>
+                <input type="text" name="last_name" id="last_name" maxlength="30" class="form-control"><br>
 
-                <label for="age">Age</label><br>
-                <input type="number" name="age" id="age" min="0"><br><br>
+                <label for="age">Age</label>
+                <input type="number" name="age" id="age" min="0" class="form-control"><br>
 
                 <p>Gender</p>
                 <label for="male">Male</label>
                 <input type="radio" name="gender" value="male" id="male"><br>
                 <label for="female">Female</label>
-                <input type="radio" name="gender" value="female" id="femaale"><br><br>
-
+                <input type="radio" name="gender" value="female" id="female">
+                <br><br>
                 <label for="weight">Weight</label><br>
-                <input type="number" name="weight" id="weight"><br><br>
+                <input type="number" name="weight" id="weight" class="form-control">
+                <br>
 
                 <label for="height">Height (inches)</label><br>
-                <input type="number" name="height" id="height"><br><br>
+                <input type="number" name="height" id="height" class="form-control"><br>
 
                 <label for="condition">Condition Level</label>
                 <select name="condition" id="condition" class="form-control">
                     <option value="3">3</option>
                     <option value="4">4</option>
-                </select><br><br>
+                </select><br>
             </div>
                 {% comment %} <input type="text" name="username" value="{{user.username}}" hidden> {% endcomment %}
 
@@ -191,7 +192,7 @@
         </div>
     </details>
 <details class="container">
-    <summary class="summary btn btn-primary btn-lg btn-block">Blood work Entry</summary>
+    <summary class="summary btn btn-primary btn-lg btn-block">Blood Work Entry</summary>
     {%for serum_data in serum_data%}
         {%if forloop.last%}
             <div class="container">
