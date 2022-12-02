@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'journals.apps.JournalsConfig',
     'crispy_forms',
+    'mathfilters'
 ]
 
 MIDDLEWARE = [

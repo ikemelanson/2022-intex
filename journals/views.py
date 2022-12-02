@@ -48,12 +48,14 @@ def dashboardPageView(request) :
     food_journal_data = Food_Journal.objects.all()
     # person_data.username
     meal_data = Meal.objects.all()
+    food_data = Food.objects.all()
 
     if request.method == 'POST' :
         Dashboard_form = Journal_Entry_Form(request.POST)
         serum_form = Serum_Entry_Form(request.POST)
         Person_form = PersonForm(request.POST)
         Food_journal_form = Food_Journal_Form(request.POST)
+        Food_form = Food_Form(request.POST)
 
         if Dashboard_form.is_valid() :
             Dashboard_form.save()
@@ -65,13 +67,17 @@ def dashboardPageView(request) :
         if Food_journal_form.is_valid() :
             Food_journal_form.save()
             return redirect('dashboard')
+
+        if Food_form.is_valid() :
+            Food_form.save()
+            return redirect('dashboard')
     else :
         Dashboard_form = Journal_Entry_Form()
         serum_form = Serum_Entry_Form()
         Person_form = PersonForm()
         Food_journal_form = Food_Journal_Form()
-
-
+        Food_form = Food_Form()
+    
     context = {
         'person_form': Person_form,
         'person_data': person_data,
@@ -82,6 +88,8 @@ def dashboardPageView(request) :
         'food_journal_data': food_journal_data,
         'Food_journal_form': Food_journal_form,
         'meal_data': meal_data,
+        'food_data': food_data,
+        'Food_form': Food_form
     }
 
     return render(request, 'healthtracker/dashboard.html', context) 
