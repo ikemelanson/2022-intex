@@ -1,0 +1,14 @@
+{%extends 'base.html'%}
+{%load static%}
+{%block content%}
+<div class="container">
+    <form method="POST" class="form-group" action="{% url 'searchFood' %}" name="searchForm">
+        {%csrf_token%}
+        <label for="searchParameter">Search For a New Food</label>
+        <input class="form-control" type="text" name="searchParameter" id="searchParameter">
+        <br>
+        <button type="submit" class="btn btn-primary btn-block">Search!</button>
+    </form>
+</div>
+
+{%endblock%}
