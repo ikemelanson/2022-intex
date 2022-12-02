@@ -43,7 +43,6 @@ def accountRegisterView(request):
 
 def dashboardPageView(request, username) :
     person_data = Person.objects.all()
-    # person_data = Person.objects.all(username = request.POST['username'])
     data = Journal_Entry.objects.all()
     serum_data = Serum_Entry.objects.all()
     food_journal_data = Food_Journal.objects.all()
@@ -63,9 +62,9 @@ def dashboardPageView(request, username) :
             serum_form.save()
             return redirect('dashboard')
 
-        # if Food_journal_form.is_valid() :
-        #     Food_journal_form.save()
-        #     return redirect('dashboard')
+        if Food_journal_form.is_valid() :
+            Food_journal_form.save()
+            return redirect('dashboard')
     else :
         Dashboard_form = Journal_Entry_Form()
         serum_form = Serum_Entry_Form()
