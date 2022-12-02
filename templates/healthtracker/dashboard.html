@@ -193,7 +193,7 @@
                         {%endfor%}
                     </select><br><br> {% endcomment %}
                     </br>
-                    <input class='btn btn-primary btn-block' type='submit' value='Add'>
+                    <input class='btn btn-primary btn-block' type='submit' value='Add'><br><br>
                 </form>
             </div>
             <button class="accordion">Step 2: <b>Add Food Amount</b></button>
@@ -274,13 +274,14 @@
                     {% endwith %}
                     {% endwith %}
 
-                    <div>
-                        <form method="POST" class="form-group" action="{% url 'editJournal' %}" name="editSerum">
+                    <div style="float:left">
+                        <form method="POST" class="form-group" action="{% url 'editJournal' %}" name="editSerum" style="float:left">
                             {%csrf_token%}
                             <input type="number" name="journal_id" id="journal_id" value="{{entry.journal_id}}" hidden>
                             <button type="submit" class="btn btn-primary">Edit Journal</button>
-                        </form>
-                        <form method="POST" class="form-group" action="{% url 'delJournal' %}" name="delJournal">
+                        </form> 
+                        &nbsp&nbsp
+                        <form method="POST" class="form-group" action="{% url 'delJournal' %}" name="delJournal" style="float:right">
                             {%csrf_token%}
                             <input type="number" name="journal_id" id="journal_id" value="{{entry.journal_id}}" hidden>
                             <button type="submit" class="btn btn-primary">Delete Journal</button>

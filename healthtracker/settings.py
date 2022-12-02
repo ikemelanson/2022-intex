@@ -81,9 +81,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'healthtracker',
         'USER' : 'postgres',
-        'PASSWORD': 'admin',
+        'PASSWORD': 'Hel@man512',
         'HOST': 'localhost',
-        'PORT' : '5433'
+        'PORT' : '5432'
     }
 }
 
