@@ -152,7 +152,7 @@
                 <h4>New Food Journal Entry</h4>
                 <hr>
                 <button class = "accordion">Step 1: <b>Add Meal</b></button>
-                <div class="panel">
+                <div class="panel shadow">
                     <form method="POST" action="{% url 'submituser' %}" name="personForm">
                         <div class="form-group">
                         {% csrf_token %}
@@ -178,7 +178,7 @@
                 </div>
                 <br>
                 <button class = "accordion">Step 2: <b>Add Food</b></button>
-                <div class="panel">
+                <div class="panel shadow">
                     <form method="POST">
                         {% csrf_token %}
                         {{ Food_journal_form|crispy }}
