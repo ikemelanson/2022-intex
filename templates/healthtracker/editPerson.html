@@ -18,11 +18,21 @@
             <input type="number" name="age" id="age" min="0" class="form-control" value="{{person.age}}"><br>
 
             <p>Gender</p>
+            {%if person.gender == "male"%}
             <label for="male">Male</label>
-            <input type="radio" name="gender" value="male" id="male" checked="{{person.gender}}"><br>
+            <input type="radio" name="gender" value="male" id="male" checked><br>
             <label for="female">Female</label>
-            <input type="radio" name="gender" value="female" id="female" checked = "{{person.gender}}">
+            <input type="radio" name="gender" value="female" id="female">
+            
+            {%else%}
+            <label for="male">Male</label>
+            <input type="radio" name="gender" value="male" id="male"><br>
+            <label for="female">Female</label>
+            <input type="radio" name="gender" value="female" id="female" checked>
+            {%endif%}
+            
             <br><br>
+
             <label for="weight">Weight</label><br>
             <input type="number" name="weight" id="weight" class="form-control" value="{{person.weight}}">
             <br>
