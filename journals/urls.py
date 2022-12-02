@@ -9,5 +9,6 @@ urlpatterns = [
     path("logout/", auth_view.LogoutView.as_view(template_name='healthtracker/logout.html'), name="logout"),
     path("profile/", profilePageView, name="profile"),
     path("submituser/", submituser, name="submituser"),
+    path("submitmeal/", submitmeal, name="submitmeal"),
     path("", indexPageView, name="index"), 
 ]    

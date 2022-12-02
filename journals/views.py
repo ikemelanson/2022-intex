@@ -65,9 +65,9 @@ def dashboardPageView(request) :
             serum_form.save()
             return redirect('dashboard')
 
-        if Food_journal_form.is_valid() :
-            Food_journal_form.save()
-            return redirect('dashboard')
+        # if Food_journal_form.is_valid() :
+        #     Food_journal_form.save()
+        #     return redirect('dashboard')
     else :
         Dashboard_form = Journal_Entry_Form()
         serum_form = Serum_Entry_Form()
@@ -104,6 +104,20 @@ def submituser(request):
         person.username = request.POST['username']
 
         person.save()
+        return redirect('dashboard')
+    return dashboardPageView(request)
+
+def submitmeal(request):
+    if request.method == "POST":
+        journalentry = Journal_Entry()
+        
+
+        journalentry.person_id = request.POST['person_id']
+        journalentry.journal_date = request.POST['journal_date']
+        journalentry.journal_time = request.POST['journal_time']
+        journalentry.meal_id = request.POST['meal_id']
+
+        journalentry.save()
 
         return dashboardPageView(request)
 

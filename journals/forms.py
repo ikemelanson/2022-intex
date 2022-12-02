@@ -10,7 +10,7 @@ class PersonForm(forms.ModelForm) :
 class Journal_Entry_Form(forms.ModelForm) :
     class Meta :
         model = Journal_Entry
-        fields = '__all__'
+        fields = ['person_id', 'journal_date', 'journal_time', 'meal_id']
 
 class AccountRegister(forms.ModelForm):
     class Meta:
