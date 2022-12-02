@@ -1,0 +1,19 @@
+{%extends 'base.html'%}
+{%load static%}
+{%block content%}
+<div class="foody shadow">
+    <form method="POST" class="form-group" action="{% url 'searchFood' %}" name="searchForm">
+        {%csrf_token%}
+        <h3 class="food">Search For A New Food </h3>
+        <br>
+        {% comment %} <label for="searchParameter">Search For a New Food</label> {% endcomment %}
+        <input class="form-control food-search" type="text" name="searchParameter" id="searchParameter" placeholder="steak, tomatos, etc..">
+        <br>
+        <button type="submit" class="btn btn-primary btn-block">Search</button>
+    </form>
+</div>
+<br>
+<div class="container">
+   <a class="alert-link" href="{% url 'dashboard'%}"><button class="btn btn-primary">Back</button></a>
+</div>
+{%endblock%}

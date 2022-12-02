@@ -8,7 +8,26 @@
     --gray-2:#d3d4db;
     --white: #FFFFFF;
 }
-
+#PotassiumChart{
+    align-items: center;
+    display: inline;
+}
+.PotassiumC {
+    align-items: center;
+    display: inline;
+}
+.foody {
+    padding: 30px;
+    border-radius: 10px;
+    width: 50%;
+    margin: auto;
+}
+.food {
+    text-align: center;
+}
+.food-search {
+    border-radius: 20px !important;
+}
 .tab {
     width: 90vh;
 }
@@ -257,6 +276,14 @@ footer .copy {
     color: var(--gray-1);
     line-height: 17px;
     font-weight: 400px;
+}
+
+.alert {
+    background-color: #fbc0c0 !important;
+    color: rgb(183, 0, 0) !important;
+    text-align: center;
+    width: 50%;
+    margin: auto;
 }
 
 @media (max-width:576px) {

@@ -114,17 +114,6 @@
            
         </div>
     </div>
-    {%if user.is_authenticated%}
-    <div class="buttons d-grid gap-1 col-6 mx-auto">
-        <a href="{%url 'dashboard' %}" class="btn btn-primary btn-lg"> View dashboard</a>  
-        {% comment %} <a href="#" class="btn btn-outline-secondary m5-3"> Live previews </a>   {% endcomment %}
-      </div>
-    {%else%}
-    <div class="buttons d-grid gap-1 col-6 mx-auto">
-        <a href="{%url 'account'%}" class="btn btn-primary btn-lg"> Get Started</a>  
-        {% comment %} <a href="#" class="btn btn-outline-secondary m5-3"> Live previews </a>   {% endcomment %}
-      </div>
-      {%endif%}
 </section>
 {%endblock%}
 

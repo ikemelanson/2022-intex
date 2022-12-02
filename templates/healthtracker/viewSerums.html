@@ -1,0 +1,28 @@
+{%extends 'base.html'%}
+{%load static%}
+{%block content%}
+
+<div class="foody shadow">
+    <h3 class="food">Serum Entries</h3>
+    {%for serum in serum_data%}
+       <h4>{{serum.serum_entry_date}}  {{serum.serum_entry_time}}</h4>
+       
+        <form method="POST" class="form-group" action="{% url 'editSerum' %}" name="editSerum">
+            {%csrf_token%}
+            <input type="number" name="serum_id" id="serum_id" value="{{serum.id}}" hidden>
+            <br>
+            <button type="submit" class="btn btn-primary">Edit</button>
+        </form>
+        <form method="POST" class="form-group" action="{% url 'delSerum' %}" name="delSerum">
+            {%csrf_token%}
+            <input type="number" name="serum_id" id="serum_id" value="{{serum.id}}" hidden>
+            <button type="submit" class="btn btn-primary">Delete</button>
+            <br>
+        </form>
+        {%endfor%}
+</div>
+    <br>
+    <div class="container">
+       <a class="alert-link" href="{% url 'dashboard'%}"><button class="btn btn-primary">Back</button></a>
+   </div>
+{%endblock%}

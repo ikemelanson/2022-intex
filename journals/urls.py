@@ -4,7 +4,17 @@ from django.contrib.auth import views as auth_view
 
 urlpatterns = [
     path("dashboard/", dashboardPageView, name="dashboard"),
-    # path("dashboard/<str:username>", dashboardUsernamePageView, name="dashboard"),
+    path("newFood/", newFoodPageView, name="newFood"),
+    path("commitFood/", commitFood, name="commitFood"),
+    path("viewSerums/", viewSerums, name="viewSerums"),
+    path("editSerum/", editSerum, name="editSerum"),
+    path("editPerson/", editPerson, name="editPerson"),
+    path("commitPerson/", commitPerson, name="commitPerson"),
+    path("delPerson/", delPerson, name="delPerson"),
+    path("commitSerum/", commitSerum, name="commitSerum"),
+    path("delSerum/", delSerum, name="delSerum"),
+    path("viewPeople/", viewPeople, name="viewPeople"),
+    path("searchFood/", searchFoodPageView, name="searchFood"),
     path("login/", auth_view.LoginView.as_view(template_name='healthtracker/login.html'), name="login"),
     path("accountregister/", accountRegisterView, name="account"),
     path("logout/", auth_view.LogoutView.as_view(template_name='healthtracker/logout.html'), name="logout"),
