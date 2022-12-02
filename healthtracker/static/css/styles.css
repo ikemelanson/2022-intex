@@ -259,6 +259,14 @@ footer .copy {
     font-weight: 400px;
 }
 
+.alert {
+    background-color: #fbc0c0 !important;
+    color: rgb(183, 0, 0) !important;
+    text-align: center;
+    width: 50%;
+    margin: auto;
+}
+
 @media (max-width:576px) {
 
     .navbar {

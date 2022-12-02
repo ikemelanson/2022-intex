@@ -4,6 +4,7 @@ from .models import *
 from .forms import *
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
+import requests
 
 def indexPageView(request):
     return render(request, 'healthtracker/index.html' )
@@ -118,6 +119,85 @@ def submitmeal(request):
         journalentry.save()
 
         return dashboardPageView(request, request.POST['username'])
+
+def newFoodPageView(request):
+    return render(request, 'healthtracker/newFood.html')
+
+def searchFoodPageView(request):
+
+    query = request.POST['searchParameter']
+    query  = query.lower()
+
+    foodItem = {
+        "status": 0,
+        "name": query,
+        "nutrients" : {
+            "n" : 0.0,
+            "a" : 0.0,
+            "P" : 0.0,
+            "K" : 0.0
+        }
+    }
+
+    URL1 = "https://api.nal.usda.gov/fdc/v1/foods/search"
+    PARAMS1 = {
+        'api_key' : 't71OoedERi0Xneuuyblf1ECkNzqwBtNXf9Mgp3yp',
+        'query': query,
+    }
+
+    r1 = requests.get(url = URL1, params= PARAMS1)
+    data1 = r1.json()
+
+    if data1['totalHits'] > 0:
+
+        fdcID = str(data1['foods'][0]['fdcId'])
+
+        URL2 = 'https://api.nal.usda.gov/fdc/v1/food/' 
+        URL2 += fdcID
+        URL2 += "?format=abridged&nutrients=305&nutrients=307&nutrients=203&nutrients=306&api_key=t71OoedERi0Xneuuyblf1ECkNzqwBtNXf9Mgp3yp"
+
+        r2 = requests.get(url = URL2)
+        data2 = r2.json()
+        print(data2)
+
+        if query in ((data2['description']).lower()):
+            foodItem['name'] = (data2['description'])
+            foodItem['status'] = 2
+            nutrients = data2['foodNutrients']
+            for count in range(0, len(nutrients)):
+                name = nutrients[count]['name'] 
+                amount = nutrients[count]['amount']
+                foodItem['nutrients'][name[len(name) - 1]] = amount
+
+        else:
+            # be more specific
+            foodItem['status'] = 1
+            foodItem['name'] = query
+            print("Query successful but no items match your search")
+
+    else:
+        # add the food yourself
+        print("Query unsuccesful")
+
+    print(foodItem)
+
+    return render(request, 'healthtracker/addFood.html', foodItem)
+
+def commitFood(request):
+    if request.method == "POST":
+
+        food = Food()
+
+        food.food_name = request.POST['food_name']
+        food.g_protein = request.POST['g_protein']
+        food.mg_phosphorus = request.POST['mg_phosphorus']
+        food.mg_potassium = request.POST['mg_potassium']
+        food.mg_sodium = request.POST['mg_sodium']
+
+        food.save()
+
+        return redirect("dashboard")
+
 
 # def dashboardUsernamePageView(request,username):
 #     if request.method == "POST":
