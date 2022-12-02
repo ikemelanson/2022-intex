@@ -156,34 +156,6 @@
             </div>
             {% comment %} <input type="text" name="username" value="{{user.username}}" hidden> {% endcomment %}
 
-<<<<<<< HEAD
-                <button type="submit" class="btn btn-primary btn-block">Submit</button>
-            </div>
-            </form>
-          </div>
-          <br>
-          <div class="foody">
-          <a href="{% url 'viewPeople'%}"><button type="button" class="btn btn-primary btn-block">Edit Personal Information</button></a>
-          </div>
-    </details>
-    <details class="container">
-        <summary class="summary btn btn-primary btn-lg btn-block">Journal Entry</summary>
-        <div class="content">
-            <div class= "border journalentry">
-                <h4>New Food Journal Entry</h4>
-                <hr>
-                <button class = "accordion">Step 1: <b>Add Meal</b></button>
-                <div class="panel">
-                    <form method="POST"> <!--action="{% url 'submitmeal' %}" name="personForm">-->
-                        {% csrf_token %}
-                        {{ Dashboard_form|crispy }}
-                        {% comment %} <label for="person_id">Person</label><br>
-                        <select name="person_id" id="person_id">
-                            {%for person in data%}
-                                <option value="first_name">{{person.first_name}}</option>
-                            {%endfor%}
-                        </select><br><br>
-=======
             <button type="submit" class="btn btn-primary btn-block">Submit</button>
     </div>
     </form>
@@ -208,7 +180,6 @@
                         <option value="first_name">{{person.first_name}}</option>
                         {%endfor%}
                     </select><br><br>
->>>>>>> b2c72f2ef6700b8c04aaceef55302c22ce702df9
 
                     <label for "journal_date">Time</label>
                     <input type="time" name="journal_time" id="journal_time" class="form-control" default=><br>
@@ -223,7 +194,6 @@
                     <input class='btn btn-primary btn-block' type='submit' value='Add'>
                 </form>
             </div>
-<<<<<<< HEAD
             <div class="journalGraph">
                 <div class="graphs">
                     {% for entry in data %}
@@ -253,7 +223,6 @@
                                     {% if nutrient.food_id == food.food_id_id%}
                                         {% with food.servings|mul:nutrient.g_protein as protein %}
                                         {% with protein|addition:totProt as totPro %}
-=======
             <br>
             <button class="accordion">Step 2: <b>Add Food Amount</b></button>
             <div class="panel">
@@ -298,7 +267,6 @@
                     {% if nutrient.food_id == food.food_id_id%}
                     {% with food.servings|mul:nutrient.g_protein as protein %}
                     {% with protein|addition:totProt as totPro %}
->>>>>>> b2c72f2ef6700b8c04aaceef55302c22ce702df9
 
                     {% with food.servings|mul:nutrient.mg_phosphorus as phos %}
                     {% with phos|addition:totPhos as totPhos %}
@@ -411,9 +379,7 @@
                                 <button class="tablinks" onclick="openCity(event, 'Albumin')">Albumin</button>
                                 <button class="tablinks" onclick="openCity(event, 'Blood Sugar')">Blood Sugar</button>
 
-<<<<<<< HEAD
     </div>
-=======
                                 <div id="Potassium" class="tabcontent">
                                     <div>
                                         <!-- Add visuals here -->
@@ -727,7 +693,6 @@
                                     Entries</button></a>
                         </div>
 </details>
->>>>>>> b2c72f2ef6700b8c04aaceef55302c22ce702df9
 <br>
         <a href="{%url 'viewSerums'%}"><button class="btn btn-primary  serums">View All Serum Entries</button></a>
   </details>
