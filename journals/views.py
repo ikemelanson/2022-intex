@@ -233,6 +233,7 @@ def commitPerson(request):
         person.last_name = request.POST['last_name']
         person.age = request.POST['age']
         person.height = request.POST['height']
+        person.weight = request.POST['weight']
         person.condition = request.POST['condition']
         person.gender = request.POST['gender']
 
